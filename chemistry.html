@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Formulas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .formula-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            height: 100%;
+        }
+        
+        .formula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .chemistry-card {
+            border-left: 4px solid #28a745;
+        }
+        
+        .formula-content {
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        
+        .search-input {
+            padding-left: 40px;
+            border-radius: 50px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-toggle {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-toggle:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
+        
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 0;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .formula-content {
+                font-size: 1rem;
+                min-height: 60px;
+            }
+            .card-title {
+                font-size: 1rem;
+            }
+            .btn-toggle {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            .search-input {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .col-lg-4, .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .formula-content {
+                font-size: 0.9rem;
+            }
+            .tags span {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container">
+            <a class="navbar-brand" href="index.HTML"><i class="fas fa-square-root-variable me-2"></i>Formulas App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.HTML">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="math.html">Mathematics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="physics.html">Physics</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="chemistry.html">Chemistry</a></li>
+                    <li class="nav-item"><a class="nav-link" href="biology.html">Biology</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold"><i class="fas fa-square-root-variable me-3"></i>Chemistry Formulas</h1>
+            <p class="lead">A comprehensive collection of essential chemistry formulas</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-container">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" id="search" class="form-control search-input" placeholder="Search formulas by name, category, or tags...">
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title">Chemistry Formulas</h2>
+            <button class="btn btn-toggle" id="toggleChemistry">
+                <i class="fas fa-chevron-down me-2"></i>Show More
+            </button>
+        </div>
+        <div id="chemistry-formulas" class="row"></div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <i class="fas fa-search fa-3x mb-3"></i>
+            <h3>No formulas found</h3>
+            <p>Try adjusting your search terms</p>
+        </div>
+    </div>
+
+    <footer class="footer text-center mt-5">
+        <div class="container">
+            <p>&copy; 2023 Mathematical and Physics Formulas App | Created with <i class="fas fa-heart text-danger"></i> for students and educators</p>
+        </div>
+    </footer>
+
+    <script>
+        // Formula data
+        const chemistryFormulas = [
+            { name: "Ideal Gas Law", category: "Gas Laws", latex: "PV = nRT", tags: ["gas", "pressure", "volume"] },
+            { name: "pH Formula", category: "Acids and Bases", latex: "pH = -\\log[H^+]", tags: ["ph", "acid", "base"] },
+            { name: "Molarity", category: "Solutions", latex: "M = \\frac{n}{V}", tags: ["molarity", "concentration", "solution"] },
+            { name: "Equilibrium Constant", category: "Equilibrium", latex: "K = \\frac{[products]}{[reactants]}", tags: ["equilibrium", "constant", "reaction"] },
+            { name: "Avogadro's Number", category: "Atomic Structure", latex: "N_A = 6.022 \\times 10^{23}", tags: ["avogadro", "number", "moles"] },
+            { name: "Molar Mass", category: "Atomic Structure", latex: "M = \\frac{m}{n}", tags: ["molar", "mass", "moles"] },
+            { name: "Rate Law", category: "Kinetics", latex: "rate = k[A]^m[B]^n", tags: ["rate", "law", "kinetics"] },
+            { name: "Arrhenius Equation", category: "Kinetics", latex: "k = Ae^{-E_a/RT}", tags: ["arrhenius", "activation", "energy"] },
+            { name: "Gibbs Free Energy", category: "Thermodynamics", latex: "\\Delta G = \\Delta H - T\\Delta S", tags: ["gibbs", "free energy", "thermodynamics"] },
+            { name: "Enthalpy", category: "Thermodynamics", latex: "\\Delta H = q_p", tags: ["enthalpy", "heat", "thermodynamics"] },
+            { name: "Entropy", category: "Thermodynamics", latex: "\\Delta S = \\frac{q_{rev}}{T}", tags: ["entropy", "disorder", "thermodynamics"] },
+            { name: "Nernst Equation", category: "Electrochemistry", latex: "E = E^\\circ - \\frac{RT}{nF} \\ln Q", tags: ["nernst", "potential", "electrochemistry"] },
+            { name: "Faraday's Laws", category: "Electrochemistry", latex: "m = \\frac{Q}{F} \\cdot \\frac{M}{n}", tags: ["faraday", "electrolysis", "electrochemistry"] },
+            { name: "Beer-Lambert Law", category: "Spectroscopy", latex: "A = \\epsilon l c", tags: ["beer", "lambert", "absorption"] },
+            { name: "Henderson-Hasselbalch Equation", category: "Acids and Bases", latex: "pH = pK_a + \\log\\left(\\frac{[A^-]}{[HA]}\\right)", tags: ["henderson", "hasselbalch", "buffer"] },
+            { name: "Raoult's Law", category: "Solutions", latex: "P = P^\\circ x", tags: ["raoult", "vapor pressure", "solution"] },
+            { name: "van der Waals Equation", category: "Gas Laws", latex: "\\left(P + \\frac{a}{V_m^2}\\right)(V_m - b) = RT", tags: ["van der waals", "gas", "equation"] },
+            { name: "Bohr Model", category: "Atomic Structure", latex: "E_n = -\\frac{13.6}{n^2} \\text{ eV}", tags: ["bohr", "model", "atom"] },
+            { name: "De Broglie Wavelength", category: "Quantum Chemistry", latex: "\\lambda = \\frac{h}{mv}", tags: ["de broglie", "wavelength", "quantum"] },
+            { name: "Heisenberg Uncertainty Principle", category: "Quantum Chemistry", latex: "\\Delta x \\Delta p \\geq \\frac{\\hbar}{2}", tags: ["heisenberg", "uncertainty", "quantum"] },
+            { name: "Schrödinger Equation", category: "Quantum Chemistry", latex: "i\\hbar\\frac{\\partial}{\\partial t}\\Psi = \\hat{H}\\Psi", tags: ["schrodinger", "equation", "quantum"] }
+        ];
+
+        let showAllChemistry = false;
+        const initialChemistryCount = 12;
+
+        function renderFormulas(formulas, containerId, showAll) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            const displayFormulas = showAll ? formulas : formulas.slice(0, initialChemistryCount);
+            displayFormulas.forEach(formula => {
+                const card = document.createElement('div');
+                card.className = 'col-lg-4 col-md-6';
+                card.innerHTML = `
+                    <div class="card formula-card chemistry-card">
+                        <div class="card-body">
+                            <h5 class="card-title">${formula.name}</h5>
+                            <div class="formula-content" id="formula-${formula.name.replace(/\s+/g, '-')}"></div>
+                            <div class="tags mt-2">
+                                <span class="badge bg-primary">${formula.category}</span>
+                                ${formula.tags.map(tag => `<span class="badge bg-secondary">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+                katex.render(formula.latex, document.getElementById(`formula-${formula.name.replace(/\s+/g, '-')}`), {
+                    throwOnError: false
+                });
+            });
+        }
+
+        function toggleShowMore(containerId, buttonId, formulas) {
+            const button = document.getElementById(buttonId);
+            showAllChemistry = !showAllChemistry;
+            renderFormulas(formulas, containerId, showAllChemistry);
+            button.innerHTML = showAllChemistry ? '<i class="fas fa-chevron-up me-2"></i>Show Less' : '<i class="fas fa-chevron-down me-2"></i>Show More';
+        }
+
+        function searchFormulas() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const filteredFormulas = chemistryFormulas.filter(formula =>
+                formula.name.toLowerCase().includes(searchTerm) ||
+                formula.category.toLowerCase().includes(searchTerm) ||
+                formula.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+            );
+            renderFormulas(filteredFormulas, 'chemistry-formulas', true);
+            document.getElementById('no-results').style.display = filteredFormulas.length === 0 ? 'block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFormulas(chemistryFormulas, 'chemistry-formulas', showAllChemistry);
+            document.getElementById('toggleChemistry').addEventListener('click', () => toggleShowMore('chemistry-formulas', 'toggleChemistry', chemistryFormulas));
+            document.getElementById('search').addEventListener('input', searchFormulas);
+        });
+    </script>
+</body>
+</html>

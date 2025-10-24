@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Formulas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .formula-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            height: 100%;
+        }
+        
+        .formula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .math-card {
+            border-left: 4px solid #3498db;
+        }
+        
+        .formula-content {
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        
+        .search-input {
+            padding-left: 40px;
+            border-radius: 50px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-toggle {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-toggle:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
+        
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 0;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .formula-content {
+                font-size: 1rem;
+                min-height: 60px;
+            }
+            .card-title {
+                font-size: 1rem;
+            }
+            .btn-toggle {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            .search-input {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .col-lg-4, .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .formula-content {
+                font-size: 0.9rem;
+            }
+            .tags span {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container">
+            <a class="navbar-brand" href="index.HTML"><i class="fas fa-square-root-variable me-2"></i>Formulas App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.HTML">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="math.html">Mathematics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="physics.html">Physics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="chemistry.html">Chemistry</a></li>
+                    <li class="nav-item"><a class="nav-link" href="biology.html">Biology</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold"><i class="fas fa-square-root-variable me-3"></i>Mathematics Formulas</h1>
+            <p class="lead">A comprehensive collection of essential mathematics formulas</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-container">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" id="search" class="form-control search-input" placeholder="Search formulas by name, category, or tags...">
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title">Mathematics Formulas</h2>
+            <button class="btn btn-toggle" id="toggleMath">
+                <i class="fas fa-chevron-down me-2"></i>Show More
+            </button>
+        </div>
+        <div id="math-formulas" class="row"></div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <i class="fas fa-search fa-3x mb-3"></i>
+            <h3>No formulas found</h3>
+            <p>Try adjusting your search terms</p>
+        </div>
+    </div>
+
+    <footer class="footer text-center mt-5">
+        <div class="container">
+            <p>&copy; 2025 Formulas App | Created with love <i></i> for students and educators</p>
+        </div>
+    </footer>
+
+    <script>
+        // Formula data
+        const mathFormulas = [
+            { name: "Quadratic Formula", category: "Algebra", latex: "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}", tags: ["quadratic", "equation", "roots"] },
+            { name: "Pythagorean Theorem", category: "Geometry", latex: "a^2 + b^2 = c^2", tags: ["triangle", "right triangle", "hypotenuse"] },
+            { name: "Area of Circle", category: "Geometry", latex: "A = \\pi r^2", tags: ["circle", "area", "radius"] },
+            { name: "Circumference of Circle", category: "Geometry", latex: "C = 2\\pi r", tags: ["circle", "circumference", "perimeter"] },
+            { name: "Distance Formula", category: "Geometry", latex: "d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}", tags: ["distance", "coordinates", "points"] },
+            { name: "Slope Formula", category: "Algebra", latex: "m = \\frac{y_2 - y_1}{x_2 - x_1}", tags: ["slope", "line", "gradient"] },
+            { name: "Quadratic Equation", category: "Algebra", latex: "ax^2 + bx + c = 0", tags: ["quadratic", "polynomial", "equation"] },
+            { name: "Binomial Theorem", category: "Algebra", latex: "(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k", tags: ["binomial", "expansion", "polynomial"] },
+            { name: "Arithmetic Sequence", category: "Sequences", latex: "a_n = a_1 + (n - 1)d", tags: ["arithmetic", "sequence", "series"] },
+            { name: "Geometric Sequence", category: "Sequences", latex: "a_n = a_1 \\cdot r^{n-1}", tags: ["geometric", "sequence", "series"] },
+            { name: "Sum of Arithmetic Series", category: "Sequences", latex: "S_n = \\frac{n}{2}(a_1 + a_n)", tags: ["arithmetic", "series", "sum"] },
+            { name: "Sum of Geometric Series", category: "Sequences", latex: "S_n = a_1 \\frac{1 - r^n}{1 - r}", tags: ["geometric", "series", "sum"] },
+            { name: "Euler's Formula", category: "Complex Numbers", latex: "e^{i\\theta} = \\cos\\theta + i\\sin\\theta", tags: ["euler", "complex", "exponential"] },
+            { name: "De Moivre's Theorem", category: "Complex Numbers", latex: "(\\cos\\theta + i\\sin\\theta)^n = \\cos(n\\theta) + i\\sin(n\\theta)", tags: ["complex", "trigonometry", "powers"] },
+            { name: "Law of Sines", category: "Trigonometry", latex: "\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}", tags: ["sine", "triangle", "trigonometry"] },
+            { name: "Law of Cosines", category: "Trigonometry", latex: "c^2 = a^2 + b^2 - 2ab\\cos C", tags: ["cosine", "triangle", "trigonometry"] },
+            { name: "Double Angle Formula (Sine)", category: "Trigonometry", latex: "\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta", tags: ["sine", "double angle", "trigonometry"] },
+            { name: "Double Angle Formula (Cosine)", category: "Trigonometry", latex: "\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta", tags: ["cosine", "double angle", "trigonometry"] },
+            { name: "Half Angle Formula (Sine)", category: "Trigonometry", latex: "\\sin\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 - \\cos\\theta}{2}}", tags: ["sine", "half angle", "trigonometry"] },
+            { name: "Half Angle Formula (Cosine)", category: "Trigonometry", latex: "\\cos\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 + \\cos\\theta}{2}}", tags: ["cosine", "half angle", "trigonometry"] },
+            { name: "Product-to-Sum Formula", category: "Trigonometry", latex: "\\sin A \\cos B = \\frac{1}{2}[\\sin(A+B) + \\sin(A-B)]", tags: ["trigonometry", "product", "sum"] },
+            { name: "Sum-to-Product Formula", category: "Trigonometry", latex: "\\sin A + \\sin B = 2\\sin\\frac{A+B}{2}\\cos\\frac{A-B}{2}", tags: ["trigonometry", "sum", "product"] },
+            { name: "Derivative of Sine", category: "Calculus", latex: "\\frac{d}{dx}\\sin x = \\cos x", tags: ["derivative", "sine", "calculus"] },
+            { name: "Derivative of Cosine", category: "Calculus", latex: "\\frac{d}{dx}\\cos x = -\\sin x", tags: ["derivative", "cosine", "calculus"] },
+            { name: "Derivative of Tangent", category: "Calculus", latex: "\\frac{d}{dx}\\tan x = \\sec^2 x", tags: ["derivative", "tangent", "calculus"] },
+            { name: "Power Rule", category: "Calculus", latex: "\\frac{d}{dx}x^n = nx^{n-1}", tags: ["derivative", "power", "calculus"] },
+            { name: "Product Rule", category: "Calculus", latex: "\\frac{d}{dx}[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)", tags: ["derivative", "product", "calculus"] },
+            { name: "Quotient Rule", category: "Calculus", latex: "\\frac{d}{dx}\\left[\\frac{f(x)}{g(x)}\\right] = \\frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}", tags: ["derivative", "quotient", "calculus"] },
+            { name: "Chain Rule", category: "Calculus", latex: "\\frac{d}{dx}f(g(x)) = f'(g(x)) \\cdot g'(x)", tags: ["derivative", "chain", "calculus"] },
+            { name: "Integration by Parts", category: "Calculus", latex: "\\int u\\,dv = uv - \\int v\\,du", tags: ["integral", "parts", "calculus"] },
+            { name: "Fundamental Theorem of Calculus", category: "Calculus", latex: "\\int_a^b f(x)\\,dx = F(b) - F(a)", tags: ["integral", "fundamental", "calculus"] },
+            { name: "Trapezoidal Rule", category: "Calculus", latex: "\\int_a^b f(x)\\,dx \\approx \\frac{b-a}{2n}[f(x_0) + 2f(x_1) + \\cdots + 2f(x_{n-1}) + f(x_n)]", tags: ["integral", "approximation", "numerical"] },
+            { name: "Simpson's Rule", category: "Calculus", latex: "\\int_a^b f(x)\\,dx \\approx \\frac{b-a}{3n}[f(x_0) + 4f(x_1) + 2f(x_2) + \\cdots + 4f(x_{n-1}) + f(x_n)]", tags: ["integral", "approximation", "numerical"] },
+            { name: "Taylor Series", category: "Calculus", latex: "f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x-a)^n", tags: ["series", "approximation", "calculus"] },
+            { name: "Maclaurin Series", category: "Calculus", latex: "f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(0)}{n!}x^n", tags: ["series", "approximation", "calculus"] },
+            { name: "Limit Definition of Derivative", category: "Calculus", latex: "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}", tags: ["derivative", "limit", "calculus"] },
+            { name: "L'Hôpital's Rule", category: "Calculus", latex: "\\lim_{x \\to c} \\frac{f(x)}{g(x)} = \\lim_{x \\to c} \\frac{f'(x)}{g'(x)}", tags: ["limit", "calculus", "rule"] },
+            { name: "Dot Product", category: "Vector Calculus", latex: "\\mathbf{a} \\cdot \\mathbf{b} = |\\mathbf{a}||\\mathbf{b}|\\cos\\theta", tags: ["vector", "dot product", "scalar"] },
+            { name: "Cross Product", category: "Vector Calculus", latex: "|\\mathbf{a} \\times \\mathbf{b}| = |\\mathbf{a}||\\mathbf{b}|\\sin\\theta", tags: ["vector", "cross product", "magnitude"] },
+            { name: "Gradient", category: "Vector Calculus", latex: "\\nabla f = \\left(\\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y}, \\frac{\\partial f}{\\partial z}\\right)", tags: ["vector", "gradient", "multivariable"] },
+            { name: "Divergence", category: "Vector Calculus", latex: "\\nabla \\cdot \\mathbf{F} = \\frac{\\partial F_x}{\\partial x} + \\frac{\\partial F_y}{\\partial y} + \\frac{\\partial F_z}{\\partial z}", tags: ["vector", "divergence", "multivariable"] },
+            { name: "Curl", category: "Vector Calculus", latex: "\\nabla \\times \\mathbf{F} = \\left(\\frac{\\partial F_z}{\\partial y} - \\frac{\\partial F_y}{\\partial z}, \\frac{\\partial F_x}{\\partial z} - \\frac{\\partial F_z}{\\partial x}, \\frac{\\partial F_y}{\\partial x} - \\frac{\\partial F_x}{\\partial y}\\right)", tags: ["vector", "curl", "multivariable"] },
+            { name: "Laplacian", category: "Vector Calculus", latex: "\\nabla^2 f = \\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2} + \\frac{\\partial^2 f}{\\partial z^2}", tags: ["vector", "laplacian", "multivariable"] },
+            { name: "Green's Theorem", category: "Vector Calculus", latex: "\\oint_C (L\\,dx + M\\,dy) = \\iint_D \\left(\\frac{\\partial M}{\\partial x} - \\frac{\\partial L}{\\partial y}\\right) dA", tags: ["vector", "integral", "theorem"] },
+            { name: "Stokes' Theorem", category: "Vector Calculus", latex: "\\oint_C \\mathbf{F} \\cdot d\\mathbf{r} = \\iint_S (\\nabla \\times \\mathbf{F}) \\cdot d\\mathbf{S}", tags: ["vector", "integral", "theorem"] },
+            { name: "Divergence Theorem", category: "Vector Calculus", latex: "\\oiint_S \\mathbf{F} \\cdot d\\mathbf{S} = \\iiint_V (\\nabla \\cdot \\mathbf{F})\\,dV", tags: ["vector", "integral", "theorem"] },
+            { name: "Probability of Event", category: "Probability", latex: "P(A) = \\frac{\\text{Number of favorable outcomes}}{\\text{Total number of outcomes}}", tags: ["probability", "event", "outcomes"] },
+            { name: "Conditional Probability", category: "Probability", latex: "P(A|B) = \\frac{P(A \\cap B)}{P(B)}", tags: ["probability", "conditional", "event"] },
+            { name: "Bayes' Theorem", category: "Probability", latex: "P(A|B) = \\frac{P(B|A)P(A)}{P(B)}", tags: ["probability", "bayes", "theorem"] },
+            { name: "Binomial Distribution", category: "Probability", latex: "P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}", tags: ["probability", "distribution", "binomial"] },
+            { name: "Normal Distribution", category: "Probability", latex: "f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}", tags: ["probability", "distribution", "normal"] },
+            { name: "Poisson Distribution", category: "Probability", latex: "P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}", tags: ["probability", "distribution", "poisson"] },
+            { name: "Exponential Distribution", category: "Probability", latex: "f(x) = \\lambda e^{-\\lambda x}", tags: ["probability", "distribution", "exponential"] },
+            { name: "Mean", category: "Statistics", latex: "\\mu = \\frac{1}{n} \\sum_{i=1}^{n} x_i", tags: ["statistics", "mean", "average"] },
+            { name: "Variance", category: "Statistics", latex: "\\sigma^2 = \\frac{1}{n} \\sum_{i=1}^{n} (x_i - \\mu)^2", tags: ["statistics", "variance", "dispersion"] },
+            { name: "Standard Deviation", category: "Statistics", latex: "\\sigma = \\sqrt{\\frac{1}{n} \\sum_{i=1}^{n} (x_i - \\mu)^2}", tags: ["statistics", "standard deviation", "dispersion"] },
+            { name: "Covariance", category: "Statistics", latex: "\\text{Cov}(X,Y) = \\frac{1}{n} \\sum_{i=1}^{n} (x_i - \\mu_x)(y_i - \\mu_y)", tags: ["statistics", "covariance", "relationship"] },
+            { name: "Correlation Coefficient", category: "Statistics", latex: "r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum (x_i - \\bar{x})^2 \\sum (y_i - \\bar{y})^2}}", tags: ["statistics", "correlation", "relationship"] },
+            { name: "Linear Regression", category: "Statistics", latex: "y = mx + b", tags: ["statistics", "regression", "line"] },
+            { name: "Matrix Multiplication", category: "Linear Algebra", latex: "C_{ij} = \\sum_{k=1}^{n} A_{ik} B_{kj}", tags: ["matrix", "multiplication", "linear algebra"] },
+            { name: "Determinant of 2x2 Matrix", category: "Linear Algebra", latex: "\\det\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc", tags: ["matrix", "determinant", "linear algebra"] },
+            { name: "Determinant of 3x3 Matrix", category: "Linear Algebra", latex: "\\det\\begin{pmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\end{pmatrix} = a(ei - fh) - b(di - fg) + c(dh - eg)", tags: ["matrix", "determinant", "linear algebra"] },
+            { name: "Inverse of 2x2 Matrix", category: "Linear Algebra", latex: "\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}", tags: ["matrix", "inverse", "linear algebra"] },
+            { name: "Eigenvalue Equation", category: "Linear Algebra", latex: "A\\mathbf{v} = \\lambda\\mathbf{v}", tags: ["matrix", "eigenvalue", "eigenvector"] },
+            { name: "Characteristic Polynomial", category: "Linear Algebra", latex: "\\det(A - \\lambda I) = 0", tags: ["matrix", "eigenvalue", "polynomial"] },
+            { name: "Dot Product in Rn", category: "Linear Algebra", latex: "\\mathbf{a} \\cdot \\mathbf{b} = \\sum_{i=1}^{n} a_i b_i", tags: ["vector", "dot product", "linear algebra"] },
+            { name: "Vector Norm", category: "Linear Algebra", latex: "\\|\\mathbf{v}\\| = \\sqrt{v_1^2 + v_2^2 + \\cdots + v_n^2}", tags: ["vector", "norm", "magnitude"] },
+            { name: "Cauchy-Schwarz Inequality", category: "Linear Algebra", latex: "|\\mathbf{a} \\cdot \\mathbf{b}| \\leq \\|\\mathbf{a}\\| \\|\\mathbf{b}\\|", tags: ["inequality", "vector", "linear algebra"] },
+            { name: "Triangle Inequality", category: "Linear Algebra", latex: "\\|\\mathbf{a} + \\mathbf{b}\\| \\leq \\|\\mathbf{a}\\| + \\|\\mathbf{b}\\|", tags: ["inequality", "vector", "linear algebra"] },
+            { name: "Fourier Series", category: "Analysis", latex: "f(x) = \\frac{a_0}{2} + \\sum_{n=1}^{\\infty} [a_n \\cos(nx) + b_n \\sin(nx)]", tags: ["fourier", "series", "analysis"] },
+            { name: "Fourier Coefficients", category: "Analysis", latex: "a_n = \\frac{1}{\\pi} \\int_{-\\pi}^{\\pi} f(x) \\cos(nx)\\,dx", tags: ["fourier", "coefficients", "analysis"] },
+            { name: "Laplace Transform", category: "Analysis", latex: "F(s) = \\int_0^{\\infty} f(t) e^{-st}\\,dt", tags: ["laplace", "transform", "integral"] },
+            { name: "Inverse Laplace Transform", category: "Analysis", latex: "f(t) = \\frac{1}{2\\pi i} \\lim_{T\\to\\infty} \\int_{\\gamma-iT}^{\\gamma+iT} F(s) e^{st}\\,ds", tags: ["laplace", "transform", "integral"] },
+            { name: "Fourier Transform", category: "Analysis", latex: "F(\\omega) = \\int_{-\\infty}^{\\infty} f(t) e^{-i\\omega t}\\,dt", tags: ["fourier", "transform", "integral"] },
+            { name: "Inverse Fourier Transform", category: "Analysis", latex: "f(t) = \\frac{1}{2\\pi} \\int_{-\\infty}^{\\infty} F(\\omega) e^{i\\omega t}\\,d\\omega", tags: ["fourier", "transform", "integral"] },
+            { name: "Dirac Delta Function", category: "Analysis", latex: "\\int_{-\\infty}^{\\infty} \\delta(x)\\,dx = 1", tags: ["delta", "function", "distribution"] },
+            { name: "Heaviside Step Function", category: "Analysis", latex: "H(x) = \\begin{cases} 0 & x < 0 \\\\ 1 & x \\geq 0 \\end{cases}", tags: ["step", "function", "heaviside"] },
+            { name: "Error Function", category: "Analysis", latex: "\\text{erf}(x) = \\frac{2}{\\sqrt{\\pi}} \\int_0^x e^{-t^2}\\,dt", tags: ["error", "function", "integral"] },
+            { name: "Gamma Function", category: "Analysis", latex: "\\Gamma(z) = \\int_0^{\\infty} t^{z-1} e^{-t}\\,dt", tags: ["gamma", "function", "integral"] },
+            { name: "Beta Function", category: "Analysis", latex: "B(x,y) = \\int_0^1 t^{x-1} (1-t)^{y-1}\\,dt", tags: ["beta", "function", "integral"] },
+            { name: "Riemann Zeta Function", category: "Analysis", latex: "\\zeta(s) = \\sum_{n=1}^{\\infty} \\frac{1}{n^s}", tags: ["zeta", "function", "series"] },
+            { name: "Bessel Function", category: "Analysis", latex: "J_n(x) = \\frac{1}{\\pi} \\int_0^{\\pi} \\cos(n\\theta - x\\sin\\theta)\\,d\\theta", tags: ["bessel", "function", "integral"] },
+            { name: "Legendre Polynomial", category: "Analysis", latex: "P_n(x) = \\frac{1}{2^n n!} \\frac{d^n}{dx^n} (x^2 - 1)^n", tags: ["legendre", "polynomial", "differential"] },
+            { name: "Hermite Polynomial", category: "Analysis", latex: "H_n(x) = (-1)^n e^{x^2} \\frac{d^n}{dx^n} e^{-x^2}", tags: ["hermite", "polynomial", "differential"] },
+            { name: "Laguerre Polynomial", category: "Analysis", latex: "L_n(x) = \\frac{e^x}{n!} \\frac{d^n}{dx^n} (x^n e^{-x})", tags: ["laguerre", "polynomial", "differential"] },
+            { name: "Chebyshev Polynomial", category: "Analysis", latex: "T_n(x) = \\cos(n \\cos^{-1} x)", tags: ["chebyshev", "polynomial", "trigonometry"] },
+            { name: "Hyperbolic Sine", category: "Analysis", latex: "\\sinh x = \\frac{e^x - e^{-x}}{2}", tags: ["hyperbolic", "sine", "exponential"] },
+            { name: "Hyperbolic Cosine", category: "Analysis", latex: "\\cosh x = \\frac{e^x + e^{-x}}{2}", tags: ["hyperbolic", "cosine", "exponential"] },
+            { name: "Hyperbolic Tangent", category: "Analysis", latex: "\\tanh x = \\frac{\\sinh x}{\\cosh x}", tags: ["hyperbolic", "tangent", "ratio"] },
+            { name: "Inverse Hyperbolic Sine", category: "Analysis", latex: "\\sinh^{-1} x = \\ln(x + \\sqrt{x^2 + 1})", tags: ["hyperbolic", "inverse", "logarithm"] },
+            { name: "Inverse Hyperbolic Cosine", category: "Analysis", latex: "\\cosh^{-1} x = \\ln(x + \\sqrt{x^2 - 1})", tags: ["hyperbolic", "inverse", "logarithm"] },
+            { name: "Inverse Hyperbolic Tangent", category: "Analysis", latex: "\\tanh^{-1} x = \\frac{1}{2} \\ln\\left(\\frac{1+x}{1-x}\\right)", tags: ["hyperbolic", "inverse", "logarithm"] },
+            { name: "Logarithm Change of Base", category: "Algebra", latex: "\\log_b a = \\frac{\\log_c a}{\\log_c b}", tags: ["logarithm", "change of base", "algebra"] },
+            { name: "Logarithm Product Rule", category: "Algebra", latex: "\\log_b (xy) = \\log_b x + \\log_b y", tags: ["logarithm", "product", "algebra"] },
+            { name: "Logarithm Quotient Rule", category: "Algebra", latex: "\\log_b \\left(\\frac{x}{y}\\right) = \\log_b x - \\log_b y", tags: ["logarithm", "quotient", "algebra"] },
+            { name: "Logarithm Power Rule", category: "Algebra", latex: "\\log_b (x^y) = y \\log_b x", tags: ["logarithm", "power", "algebra"] },
+            { name: "Exponential Growth", category: "Algebra", latex: "A = A_0 e^{kt}", tags: ["exponential", "growth", "function"] },
+            { name: "Exponential Decay", category: "Algebra", latex: "A = A_0 e^{-kt}", tags: ["exponential", "decay", "function"] },
+            { name: "Compound Interest", category: "Algebra", latex: "A = P\\left(1 + \\frac{r}{n}\\right)^{nt}", tags: ["interest", "compound", "finance"] },
+            { name: "Continuous Compound Interest", category: "Algebra", latex: "A = Pe^{rt}", tags: ["interest", "continuous", "finance"] }
+        ];
+
+        let showAllMath = false;
+        const initialMathCount = 12;
+
+        function renderFormulas(formulas, containerId, showAll) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            const displayFormulas = showAll ? formulas : formulas.slice(0, initialMathCount);
+            displayFormulas.forEach(formula => {
+                const card = document.createElement('div');
+                card.className = 'col-lg-4 col-md-6';
+                card.innerHTML = `
+                    <div class="card formula-card math-card">
+                        <div class="card-body">
+                            <h5 class="card-title">${formula.name}</h5>
+                            <div class="formula-content" id="formula-${formula.name.replace(/\s+/g, '-')}"></div>
+                            <div class="tags mt-2">
+                                <span class="badge bg-primary">${formula.category}</span>
+                                ${formula.tags.map(tag => `<span class="badge bg-secondary">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+                katex.render(formula.latex, document.getElementById(`formula-${formula.name.replace(/\s+/g, '-')}`), {
+                    throwOnError: false
+                });
+            });
+        }
+
+        function toggleShowMore(containerId, buttonId, formulas) {
+            const button = document.getElementById(buttonId);
+            showAllMath = !showAllMath;
+            renderFormulas(formulas, containerId, showAllMath);
+            button.innerHTML = showAllMath ? '<i class="fas fa-chevron-up me-2"></i>Show Less' : '<i class="fas fa-chevron-down me-2"></i>Show More';
+        }
+
+        function searchFormulas() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const filteredFormulas = mathFormulas.filter(formula =>
+                formula.name.toLowerCase().includes(searchTerm) ||
+                formula.category.toLowerCase().includes(searchTerm) ||
+                formula.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+            );
+            renderFormulas(filteredFormulas, 'math-formulas', true);
+            document.getElementById('no-results').style.display = filteredFormulas.length === 0 ? 'block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFormulas(mathFormulas, 'math-formulas', showAllMath);
+            document.getElementById('toggleMath').addEventListener('click', () => toggleShowMore('math-formulas', 'toggleMath', mathFormulas));
+            document.getElementById('search').addEventListener('input', searchFormulas);
+        });
+    </script>
+</body>
+</html>

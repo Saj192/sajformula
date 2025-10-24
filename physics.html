@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Formulas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .formula-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            height: 100%;
+        }
+        
+        .formula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .physics-card {
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .formula-content {
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        
+        .search-input {
+            padding-left: 40px;
+            border-radius: 50px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-toggle {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-toggle:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
+        
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 0;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .formula-content {
+                font-size: 1rem;
+                min-height: 60px;
+            }
+            .card-title {
+                font-size: 1rem;
+            }
+            .btn-toggle {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            .search-input {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .col-lg-4, .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .formula-content {
+                font-size: 0.9rem;
+            }
+            .tags span {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container">
+            <a class="navbar-brand" href="index.HTML"><i class="fas fa-square-root-variable me-2"></i>Formulas App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.HTML">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="math.html">Mathematics</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="physics.html">Physics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="chemistry.html">Chemistry</a></li>
+                    <li class="nav-item"><a class="nav-link" href="biology.html">Biology</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold"><i class="fas fa-square-root-variable me-3"></i>Physics Formulas</h1>
+            <p class="lead">A comprehensive collection of essential physics formulas</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-container">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" id="search" class="form-control search-input" placeholder="Search formulas by name, category, or tags...">
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title">Physics Formulas</h2>
+            <button class="btn btn-toggle" id="togglePhysics">
+                <i class="fas fa-chevron-down me-2"></i>Show More
+            </button>
+        </div>
+        <div id="physics-formulas" class="row"></div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <i class="fas fa-search fa-3x mb-3"></i>
+            <h3>No formulas found</h3>
+            <p>Try adjusting your search terms</p>
+        </div>
+    </div>
+
+    <footer class="footer text-center mt-5">
+        <div class="container">
+            <p>&copy; 2025 Formulas App | Created with lovefor students and educators</p>
+        </div>
+    </footer>
+
+    <script>
+        // Formula data
+        const physicsFormulas = [
+            { name: "Newton's Second Law", category: "Mechanics", latex: "F = ma", tags: ["force", "motion", "newton"] },
+            { name: "Newton's Law of Universal Gravitation", category: "Mechanics", latex: "F = G\\frac{m_1 m_2}{r^2}", tags: ["gravity", "force", "newton"] },
+            { name: "Kinetic Energy", category: "Mechanics", latex: "K = \\frac{1}{2}mv^2", tags: ["energy", "kinetic", "motion"] },
+            { name: "Potential Energy (Gravity)", category: "Mechanics", latex: "U = mgh", tags: ["energy", "potential", "gravity"] },
+            { name: "Work-Energy Theorem", category: "Mechanics", latex: "W = \\Delta K", tags: ["work", "energy", "theorem"] },
+            { name: "Conservation of Energy", category: "Mechanics", latex: "E_i = E_f", tags: ["energy", "conservation", "physics"] },
+            { name: "Momentum", category: "Mechanics", latex: "p = mv", tags: ["momentum", "motion", "mass"] },
+            { name: "Impulse", category: "Mechanics", latex: "J = F\\Delta t = \\Delta p", tags: ["impulse", "force", "momentum"] },
+            { name: "Conservation of Momentum", category: "Mechanics", latex: "\\sum p_i = \\sum p_f", tags: ["momentum", "conservation", "physics"] },
+            { name: "Centripetal Force", category: "Mechanics", latex: "F_c = \\frac{mv^2}{r}", tags: ["force", "centripetal", "circular"] },
+            { name: "Centripetal Acceleration", category: "Mechanics", latex: "a_c = \\frac{v^2}{r}", tags: ["acceleration", "centripetal", "circular"] },
+            { name: "Torque", category: "Mechanics", latex: "\\tau = rF\\sin\\theta", tags: ["torque", "rotation", "force"] },
+            { name: "Angular Momentum", category: "Mechanics", latex: "L = I\\omega", tags: ["angular", "momentum", "rotation"] },
+            { name: "Moment of Inertia", category: "Mechanics", latex: "I = \\sum m_i r_i^2", tags: ["inertia", "rotation", "mass"] },
+            { name: "Simple Harmonic Motion", category: "Mechanics", latex: "x(t) = A\\cos(\\omega t + \\phi)", tags: ["harmonic", "motion", "oscillation"] },
+            { name: "Period of Spring", category: "Mechanics", latex: "T = 2\\pi\\sqrt{\\frac{m}{k}}", tags: ["period", "spring", "oscillation"] },
+            { name: "Period of Pendulum", category: "Mechanics", latex: "T = 2\\pi\\sqrt{\\frac{L}{g}}", tags: ["period", "pendulum", "oscillation"] },
+            { name: "Hooke's Law", category: "Mechanics", latex: "F = -kx", tags: ["spring", "force", "hooke"] },
+            { name: "Bernoulli's Equation", category: "Fluid Mechanics", latex: "P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{constant}", tags: ["fluid", "pressure", "bernoulli"] },
+            { name: "Continuity Equation", category: "Fluid Mechanics", latex: "A_1 v_1 = A_2 v_2", tags: ["fluid", "continuity", "flow"] },
+            { name: "Buoyant Force", category: "Fluid Mechanics", latex: "F_b = \\rho V g", tags: ["buoyancy", "force", "archimedes"] },
+            { name: "Pressure", category: "Fluid Mechanics", latex: "P = \\frac{F}{A}", tags: ["pressure", "force", "area"] },
+            { name: "Ideal Gas Law", category: "Thermodynamics", latex: "PV = nRT", tags: ["gas", "ideal", "law"] },
+            { name: "First Law of Thermodynamics", category: "Thermodynamics", latex: "\\Delta U = Q - W", tags: ["thermodynamics", "energy", "first law"] },
+            { name: "Efficiency", category: "Thermodynamics", latex: "\\eta = \\frac{W}{Q_h}", tags: ["efficiency", "thermodynamics", "work"] },
+            { name: "Carnot Efficiency", category: "Thermodynamics", latex: "\\eta = 1 - \\frac{T_c}{T_h}", tags: ["efficiency", "carnot", "thermodynamics"] },
+            { name: "Heat Transfer", category: "Thermodynamics", latex: "Q = mc\\Delta T", tags: ["heat", "transfer", "temperature"] },
+            { name: "Specific Heat", category: "Thermodynamics", latex: "c = \\frac{Q}{m\\Delta T}", tags: ["heat", "specific", "capacity"] },
+            { name: "Latent Heat", category: "Thermodynamics", latex: "Q = mL", tags: ["heat", "latent", "phase"] },
+            { name: "RMS Speed", category: "Thermodynamics", latex: "v_{rms} = \\sqrt{\\frac{3kT}{m}}", tags: ["speed", "rms", "gas"] },
+            { name: "Maxwell-Boltzmann Distribution", category: "Thermodynamics", latex: "f(v) = 4\\pi v^2 \\left(\\frac{m}{2\\pi kT}\\right)^{3/2} e^{-\\frac{mv^2}{2kT}}", tags: ["distribution", "maxwell", "boltzmann"] },
+            { name: "Entropy", category: "Thermodynamics", latex: "\\Delta S = \\int \\frac{dQ}{T}", tags: ["entropy", "thermodynamics", "second law"] },
+            { name: "Coulomb's Law", category: "Electromagnetism", latex: "F = k\\frac{q_1 q_2}{r^2}", tags: ["coulomb", "force", "electric"] },
+            { name: "Electric Field", category: "Electromagnetism", latex: "E = \\frac{F}{q}", tags: ["electric", "field", "force"] },
+            { name: "Electric Potential", category: "Electromagnetism", latex: "V = \\frac{U}{q}", tags: ["electric", "potential", "energy"] },
+            { name: "Capacitance", category: "Electromagnetism", latex: "C = \\frac{Q}{V}", tags: ["capacitance", "charge", "voltage"] },
+            { name: "Capacitor Energy", category: "Electromagnetism", latex: "U = \\frac{1}{2}CV^2", tags: ["energy", "capacitor", "electric"] },
+            { name: "Ohm's Law", category: "Electromagnetism", latex: "V = IR", tags: ["ohm", "law", "circuit"] },
+            { name: "Electric Power", category: "Electromagnetism", latex: "P = IV", tags: ["power", "electric", "circuit"] },
+            { name: "Resistance", category: "Electromagnetism", latex: "R = \\rho\\frac{L}{A}", tags: ["resistance", "resistivity", "circuit"] },
+            { name: "Joule's Law", category: "Electromagnetism", latex: "P = I^2 R", tags: ["power", "joule", "circuit"] },
+            { name: "Kirchhoff's Current Law", category: "Electromagnetism", latex: "\\sum I_{in} = \\sum I_{out}", tags: ["kirchhoff", "current", "circuit"] },
+            { name: "Kirchhoff's Voltage Law", category: "Electromagnetism", latex: "\\sum V = 0", tags: ["kirchhoff", "voltage", "circuit"] },
+            { name: "Magnetic Force on Charge", category: "Electromagnetism", latex: "F = qvB\\sin\\theta", tags: ["magnetic", "force", "charge"] },
+            { name: "Magnetic Force on Current", category: "Electromagnetism", latex: "F = ILB\\sin\\theta", tags: ["magnetic", "force", "current"] },
+            { name: "Magnetic Field of Wire", category: "Electromagnetism", latex: "B = \\frac{\\mu_0 I}{2\\pi r}", tags: ["magnetic", "field", "wire"] },
+            { name: "Magnetic Field of Solenoid", category: "Electromagnetism", latex: "B = \\mu_0 nI", tags: ["magnetic", "field", "solenoid"] },
+            { name: "Faraday's Law", category: "Electromagnetism", latex: "\\mathcal{E} = -\\frac{d\\Phi_B}{dt}", tags: ["faraday", "law", "induction"] },
+            { name: "Lenz's Law", category: "Electromagnetism", latex: "\\mathcal{E} = -\\frac{d\\Phi_B}{dt}", tags: ["lenz", "law", "induction"] },
+            { name: "Self-Inductance", category: "Electromagnetism", latex: "\\mathcal{E} = -L\\frac{dI}{dt}", tags: ["inductance", "self", "circuit"] },
+            { name: "Inductor Energy", category: "Electromagnetism", latex: "U = \\frac{1}{2}LI^2", tags: ["energy", "inductor", "magnetic"] },
+            { name: "LC Circuit", category: "Electromagnetism", latex: "\\omega = \\frac{1}{\\sqrt{LC}}", tags: ["circuit", "lc", "oscillation"] },
+            { name: "Impedance", category: "Electromagnetism", latex: "Z = \\sqrt{R^2 + (X_L - X_C)^2}", tags: ["impedance", "circuit", "ac"] },
+            { name: "Snell's Law", category: "Optics", latex: "n_1\\sin\\theta_1 = n_2\\sin\\theta_2", tags: ["snell", "law", "refraction"] },
+            { name: "Lensmaker's Equation", category: "Optics", latex: "\\frac{1}{f} = (n-1)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)", tags: ["lens", "focal", "optics"] },
+            { name: "Thin Lens Equation", category: "Optics", latex: "\\frac{1}{f} = \\frac{1}{d_o} + \\frac{1}{d_i}", tags: ["lens", "thin", "optics"] },
+            { name: "Magnification", category: "Optics", latex: "m = -\\frac{d_i}{d_o}", tags: ["magnification", "lens", "optics"] },
+            { name: "Double-Slit Interference", category: "Optics", latex: "d\\sin\\theta = m\\lambda", tags: ["interference", "double-slit", "optics"] },
+            { name: "Single-Slit Diffraction", category: "Optics", latex: "a\\sin\\theta = m\\lambda", tags: ["diffraction", "single-slit", "optics"] },
+            { name: "Bragg's Law", category: "Optics", latex: "2d\\sin\\theta = m\\lambda", tags: ["bragg", "law", "diffraction"] },
+            { name: "Malus's Law", category: "Optics", latex: "I = I_0\\cos^2\\theta", tags: ["malus", "law", "polarization"] },
+            { name: "Doppler Effect", category: "Waves", latex: "f' = f\\frac{v \\pm v_o}{v \\mp v_s}", tags: ["doppler", "effect", "waves"] },
+            { name: "Beat Frequency", category: "Waves", latex: "f_b = |f_1 - f_2|", tags: ["beat", "frequency", "waves"] },
+            { name: "Wave Speed", category: "Waves", latex: "v = f\\lambda", tags: ["wave", "speed", "frequency"] },
+            { name: "Intensity of Wave", category: "Waves", latex: "I = \\frac{P}{A}", tags: ["intensity", "wave", "power"] },
+            { name: "Standing Waves", category: "Waves", latex: "f_n = \\frac{nv}{2L}", tags: ["standing", "wave", "frequency"] },
+            { name: "Planck's Law", category: "Quantum Mechanics", latex: "E = hf", tags: ["planck", "quantum", "energy"] },
+            { name: "Photoelectric Effect", category: "Quantum Mechanics", latex: "K_{max} = hf - \\phi", tags: ["photoelectric", "effect", "quantum"] },
+            { name: "de Broglie Wavelength", category: "Quantum Mechanics", latex: "\\lambda = \\frac{h}{p}", tags: ["de broglie", "wavelength", "quantum"] },
+            { name: "Heisenberg Uncertainty Principle", category: "Quantum Mechanics", latex: "\\Delta x \\Delta p \\geq \\frac{\\hbar}{2}", tags: ["heisenberg", "uncertainty", "quantum"] },
+            { name: "Schrödinger Equation", category: "Quantum Mechanics", latex: "i\\hbar\\frac{\\partial}{\\partial t}\\Psi = \\hat{H}\\Psi", tags: ["schrodinger", "equation", "quantum"] },
+            { name: "Wave Function", category: "Quantum Mechanics", latex: "\\Psi(x,t)", tags: ["wave", "function", "quantum"] },
+            { name: "Probability Density", category: "Quantum Mechanics", latex: "P(x) = |\\Psi(x)|^2", tags: ["probability", "density", "quantum"] },
+            { name: "Particle in a Box", category: "Quantum Mechanics", latex: "E_n = \\frac{n^2 h^2}{8mL^2}", tags: ["particle", "box", "quantum"] },
+            { name: "Hydrogen Atom Energy", category: "Quantum Mechanics", latex: "E_n = -\\frac{13.6}{n^2} \\text{ eV}", tags: ["hydrogen", "atom", "energy"] },
+            { name: "Pauli Exclusion Principle", category: "Quantum Mechanics", latex: "\\text{No two fermions can have the same quantum state}", tags: ["pauli", "exclusion", "quantum"] },
+            { name: "Spin", category: "Quantum Mechanics", latex: "S = \\sqrt{s(s+1)}\\hbar", tags: ["spin", "quantum", "angular momentum"] },
+            { name: "Time Dilation", category: "Relativity", latex: "\\Delta t = \\frac{\\Delta t_0}{\\sqrt{1 - \\frac{v^2}{c^2}}}", tags: ["time", "dilation", "relativity"] },
+            { name: "Length Contraction", category: "Relativity", latex: "L = L_0\\sqrt{1 - \\frac{v^2}{c^2}}", tags: ["length", "contraction", "relativity"] },
+            { name: "Relativistic Momentum", category: "Relativity", latex: "p = \\frac{mv}{\\sqrt{1 - \\frac{v^2}{c^2}}}", tags: ["momentum", "relativistic", "relativity"] },
+            { name: "Relativistic Energy", category: "Relativity", latex: "E = \\frac{mc^2}{\\sqrt{1 - \\frac{v^2}{c^2}}}", tags: ["energy", "relativistic", "relativity"] },
+            { name: "Rest Energy", category: "Relativity", latex: "E_0 = mc^2", tags: ["energy", "rest", "relativity"] },
+            { name: "Lorentz Transformation", category: "Relativity", latex: "x' = \\gamma(x - vt)", tags: ["lorentz", "transformation", "relativity"] },
+            { name: "Velocity Addition", category: "Relativity", latex: "u = \\frac{u' + v}{1 + \\frac{u'v}{c^2}}", tags: ["velocity", "addition", "relativity"] },
+            { name: "Relativistic Doppler Effect", category: "Relativity", latex: "f = f_0\\sqrt{\\frac{1 - \\beta}{1 + \\beta}}", tags: ["doppler", "relativistic", "relativity"] },
+            { name: "Gravitational Redshift", category: "Relativity", latex: "\\frac{\\Delta f}{f} = \\frac{gh}{c^2}", tags: ["gravitational", "redshift", "relativity"] },
+            { name: "Schwarzschild Radius", category: "Relativity", latex: "R_s = \\frac{2GM}{c^2}", tags: ["schwarzschild", "radius", "black hole"] },
+            { name: "Friedmann Equation", category: "Cosmology", latex: "H^2 = \\left(\\frac{\\dot{a}}{a}\\right)^2 = \\frac{8\\pi G}{3}\\rho - \\frac{k}{a^2}", tags: ["friedmann", "equation", "cosmology"] },
+            { name: "Hubble's Law", category: "Cosmology", latex: "v = H_0 d", tags: ["hubble", "law", "cosmology"] },
+            { name: "Redshift", category: "Cosmology", latex: "z = \\frac{\\lambda_{obs} - \\lambda_{emit}}{\\lambda_{emit}}", tags: ["redshift", "cosmology", "wavelength"] },
+            { name: "Critical Density", category: "Cosmology", latex: "\\rho_c = \\frac{3H^2}{8\\pi G}", tags: ["density", "critical", "cosmology"] },
+            { name: "Scale Factor", category: "Cosmology", latex: "a(t)", tags: ["scale", "factor", "cosmology"] },
+            { name: "Cosmic Microwave Background", category: "Cosmology", latex: "T = 2.725 \\text{ K}", tags: ["cmb", "background", "cosmology"] },
+            { name: "Dark Energy", category: "Cosmology", latex: "\\Omega_\\Lambda", tags: ["dark", "energy", "cosmology"] },
+            { name: "Dark Matter", category: "Cosmology", latex: "\\Omega_m", tags: ["dark", "matter", "cosmology"] },
+            { name: "Baryonic Matter", category: "Cosmology", latex: "\\Omega_b", tags: ["baryonic", "matter", "cosmology"] },
+            { name: "Cosmological Constant", category: "Cosmology", latex: "\\Lambda", tags: ["cosmological", "constant", "relativity"] },
+            { name: "Einstein Field Equations", category: "Relativity", latex: "G_{\\mu\\nu} = 8\\pi G T_{\\mu\\nu}", tags: ["einstein", "field", "equations"] },
+            { name: "Metric Tensor", category: "Relativity", latex: "ds^2 = g_{\\mu\\nu} dx^\\mu dx^\\nu", tags: ["metric", "tensor", "relativity"] },
+            { name: "Christoffel Symbols", category: "Relativity", latex: "\\Gamma^\\lambda_{\\mu\\nu} = \\frac{1}{2} g^{\\lambda\\rho} (\\partial_\\mu g_{\\nu\\rho} + \\partial_\\nu g_{\\rho\\mu} - \\partial_\\rho g_{\\mu\\nu})", tags: ["christoffel", "symbols", "relativity"] },
+            { name: "Riemann Curvature Tensor", category: "Relativity", latex: "R^\\rho{}_{\\sigma\\mu\\nu} = \\partial_\\mu\\Gamma^\\rho_{\\nu\\sigma} - \\partial_\\nu\\Gamma^\\rho_{\\mu\\sigma} + \\Gamma^\\rho_{\\mu\\lambda}\\Gamma^\\lambda_{\\nu\\sigma} - \\Gamma^\\rho_{\\nu\\lambda}\\Gamma^\\lambda_{\\mu\\sigma}", tags: ["riemann", "curvature", "tensor"] },
+            { name: "Ricci Tensor", category: "Relativity", latex: "R_{\\mu\\nu} = R^\\lambda{}_{\\mu\\lambda\\nu}", tags: ["ricci", "tensor", "relativity"] },
+            { name: "Ricci Scalar", category: "Relativity", latex: "R = g^{\\mu\\nu} R_{\\mu\\nu}", tags: ["ricci", "scalar", "relativity"] },
+            { name: "Einstein Tensor", category: "Relativity", latex: "G_{\\mu\\nu} = R_{\\mu\\nu} - \\frac{1}{2} R g_{\\mu\\nu}", tags: ["einstein", "tensor", "relativity"] }
+        ];
+
+        let showAllPhysics = false;
+        const initialPhysicsCount = 12;
+
+        function renderFormulas(formulas, containerId, showAll) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            const displayFormulas = showAll ? formulas : formulas.slice(0, initialPhysicsCount);
+            displayFormulas.forEach(formula => {
+                const card = document.createElement('div');
+                card.className = 'col-lg-4 col-md-6';
+                card.innerHTML = `
+                    <div class="card formula-card physics-card">
+                        <div class="card-body">
+                            <h5 class="card-title">${formula.name}</h5>
+                            <div class="formula-content" id="formula-${formula.name.replace(/\s+/g, '-')}"></div>
+                            <div class="tags mt-2">
+                                <span class="badge bg-primary">${formula.category}</span>
+                                ${formula.tags.map(tag => `<span class="badge bg-secondary">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+                katex.render(formula.latex, document.getElementById(`formula-${formula.name.replace(/\s+/g, '-')}`), {
+                    throwOnError: false
+                });
+            });
+        }
+
+        function toggleShowMore(containerId, buttonId, formulas) {
+            const button = document.getElementById(buttonId);
+            showAllPhysics = !showAllPhysics;
+            renderFormulas(formulas, containerId, showAllPhysics);
+            button.innerHTML = showAllPhysics ? '<i class="fas fa-chevron-up me-2"></i>Show Less' : '<i class="fas fa-chevron-down me-2"></i>Show More';
+        }
+
+        function searchFormulas() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const filteredFormulas = physicsFormulas.filter(formula =>
+                formula.name.toLowerCase().includes(searchTerm) ||
+                formula.category.toLowerCase().includes(searchTerm) ||
+                formula.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+            );
+            renderFormulas(filteredFormulas, 'physics-formulas', true);
+            document.getElementById('no-results').style.display = filteredFormulas.length === 0 ? 'block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFormulas(physicsFormulas, 'physics-formulas', showAllPhysics);
+            document.getElementById('togglePhysics').addEventListener('click', () => toggleShowMore('physics-formulas', 'togglePhysics', physicsFormulas));
+            document.getElementById('search').addEventListener('input', searchFormulas);
+        });
+    </script>
+</body>
+</html>

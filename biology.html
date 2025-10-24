@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology Formulas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .formula-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            height: 100%;
+        }
+        
+        .formula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .biology-card {
+            border-left: 4px solid #ffc107;
+        }
+        
+        .formula-content {
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        
+        .search-input {
+            padding-left: 40px;
+            border-radius: 50px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-toggle {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-toggle:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
+        
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 0;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .formula-content {
+                font-size: 1rem;
+                min-height: 60px;
+            }
+            .card-title {
+                font-size: 1rem;
+            }
+            .btn-toggle {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            .search-input {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .col-lg-4, .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .formula-content {
+                font-size: 0.9rem;
+            }
+            .tags span {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container">
+            <a class="navbar-brand" href="index.HTML"><i class="fas fa-square-root-variable me-2"></i>Formulas App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.HTML">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="math.html">Mathematics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="physics.html">Physics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="chemistry.html">Chemistry</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="biology.html">Biology</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold"><i class="fas fa-square-root-variable me-3"></i>Biology Formulas</h1>
+            <p class="lead">A comprehensive collection of essential biology formulas</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-container">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" id="search" class="form-control search-input" placeholder="Search formulas by name, category, or tags...">
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title">Biology Formulas</h2>
+            <button class="btn btn-toggle" id="toggleBiology">
+                <i class="fas fa-chevron-down me-2"></i>Show More
+            </button>
+        </div>
+        <div id="biology-formulas" class="row"></div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <i class="fas fa-search fa-3x mb-3"></i>
+            <h3>No formulas found</h3>
+            <p>Try adjusting your search terms</p>
+        </div>
+    </div>
+
+    <footer class="footer text-center mt-5">
+        <div class="container">
+            <p>&copy; 2023 Mathematical and Physics Formulas App | Created with <i class="fas fa-heart text-danger"></i> for students and educators</p>
+        </div>
+    </footer>
+
+    <script>
+        // Formula data
+        const biologyFormulas = [
+            { name: "Hardy-Weinberg Principle", category: "Genetics", latex: "p^2 + 2pq + q^2 = 1", tags: ["hardy", "weinberg", "genetics"] },
+            { name: "Allele Frequency", category: "Genetics", latex: "p + q = 1", tags: ["allele", "frequency", "genetics"] },
+            { name: "Photosynthesis", category: "Plant Biology", latex: "6CO_2 + 6H_2O \\rightarrow C_6H_{12}O_6 + 6O_2", tags: ["photosynthesis", "glucose", "oxygen"] },
+            { name: "Cellular Respiration", category: "Cell Biology", latex: "C_6H_{12}O_6 + 6O_2 \\rightarrow 6CO_2 + 6H_2O", tags: ["respiration", "glucose", "energy"] },
+            { name: "Osmotic Pressure", category: "Cell Biology", latex: "\\Pi = iCRT", tags: ["osmotic", "pressure", "cell"] },
+            { name: "Michaelis-Menten Equation", category: "Biochemistry", latex: "v = \\frac{V_{max}[S]}{K_m + [S]}", tags: ["michaelis", "menten", "enzyme"] },
+            { name: "Logistic Growth", category: "Ecology", latex: "\\frac{dN}{dt} = rN\\left(1 - \\frac{N}{K}\\right)", tags: ["logistic", "growth", "population"] },
+            { name: "Exponential Growth", category: "Ecology", latex: "\\frac{dN}{dt} = rN", tags: ["exponential", "growth", "population"] },
+            { name: "Shannon Diversity Index", category: "Ecology", latex: "H = -\\sum p_i \\ln p_i", tags: ["shannon", "diversity", "ecology"] },
+            { name: "Mendel's Law of Segregation", category: "Genetics", latex: "\\text{Each pair of alleles separates during gamete formation}", tags: ["mendel", "segregation", "genetics"] },
+            { name: "Mendel's Law of Independent Assortment", category: "Genetics", latex: "\\text{Alleles of different genes assort independently}", tags: ["mendel", "assortment", "genetics"] },
+            { name: "Punnett Square", category: "Genetics", latex: "\\text{Grid showing possible genotypes}", tags: ["punnett", "square", "genetics"] },
+            { name: "DNA Replication", category: "Molecular Biology", latex: "5' \\rightarrow 3'", tags: ["dna", "replication", "direction"] },
+            { name: "Central Dogma", category: "Molecular Biology", latex: "DNA \\rightarrow RNA \\rightarrow Protein", tags: ["central", "dogma", "molecular"] },
+            { name: "PCR Amplification", category: "Molecular Biology", latex: "\\text{Polymerase Chain Reaction}", tags: ["pcr", "amplification", "molecular"] },
+            { name: "Gel Electrophoresis", category: "Molecular Biology", latex: "\\text{Separation by size and charge}", tags: ["gel", "electrophoresis", "molecular"] },
+            { name: "Mitosis Stages", category: "Cell Biology", latex: "\\text{Prophase, Metaphase, Anaphase, Telophase}", tags: ["mitosis", "stages", "cell"] },
+            { name: "Meiosis Stages", category: "Cell Biology", latex: "\\text{Prophase I, Metaphase I, Anaphase I, Telophase I, Prophase II, Metaphase II, Anaphase II, Telophase II}", tags: ["meiosis", "stages", "cell"] },
+            { name: "Blood Pressure", category: "Physiology", latex: "\\text{Systolic/Diastolic}", tags: ["blood", "pressure", "physiology"] },
+            { name: "Heart Rate", category: "Physiology", latex: "\\text{Beats per minute}", tags: ["heart", "rate", "physiology"] },
+            { name: "Tidal Volume", category: "Physiology", latex: "V_T", tags: ["tidal", "volume", "respiration"] },
+            { name: "Vital Capacity", category: "Physiology", latex: "VC = TV + IRV + ERV", tags: ["vital", "capacity", "respiration"] },
+            { name: "Body Mass Index", category: "Health", latex: "BMI = \\frac{weight}{height^2}", tags: ["bmi", "body mass", "health"] }
+        ];
+
+        let showAllBiology = false;
+        const initialBiologyCount = 12;
+
+        function renderFormulas(formulas, containerId, showAll) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            const displayFormulas = showAll ? formulas : formulas.slice(0, initialBiologyCount);
+            displayFormulas.forEach(formula => {
+                const card = document.createElement('div');
+                card.className = 'col-lg-4 col-md-6';
+                card.innerHTML = `
+                    <div class="card formula-card biology-card">
+                        <div class="card-body">
+                            <h5 class="card-title">${formula.name}</h5>
+                            <div class="formula-content" id="formula-${formula.name.replace(/\s+/g, '-')}"></div>
+                            <div class="tags mt-2">
+                                <span class="badge bg-primary">${formula.category}</span>
+                                ${formula.tags.map(tag => `<span class="badge bg-secondary">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+                katex.render(formula.latex, document.getElementById(`formula-${formula.name.replace(/\s+/g, '-')}`), {
+                    throwOnError: false
+                });
+            });
+        }
+
+        function toggleShowMore(containerId, buttonId, formulas) {
+            const button = document.getElementById(buttonId);
+            showAllBiology = !showAllBiology;
+            renderFormulas(formulas, containerId, showAllBiology);
+            button.innerHTML = showAllBiology ? '<i class="fas fa-chevron-up me-2"></i>Show Less' : '<i class="fas fa-chevron-down me-2"></i>Show More';
+        }
+
+        function searchFormulas() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const filteredFormulas = biologyFormulas.filter(formula =>
+                formula.name.toLowerCase().includes(searchTerm) ||
+                formula.category.toLowerCase().includes(searchTerm) ||
+                formula.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+            );
+            renderFormulas(filteredFormulas, 'biology-formulas', true);
+            document.getElementById('no-results').style.display = filteredFormulas.length === 0 ? 'block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFormulas(biologyFormulas, 'biology-formulas', showAllBiology);
+            document.getElementById('toggleBiology').addEventListener('click', () => toggleShowMore('biology-formulas', 'toggleBiology', biologyFormulas));
+            document.getElementById('search').addEventListener('input', searchFormulas);
+        });
+    </script>
+</body>
+</html>

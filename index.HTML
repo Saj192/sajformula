@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematical and Physics Formulas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .formula-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            height: 100%;
+        }
+        
+        .formula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .math-card {
+            border-left: 4px solid #3498db;
+        }
+        
+        .physics-card {
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .chemistry-card {
+            border-left: 4px solid #28a745;
+        }
+        
+        .biology-card {
+            border-left: 4px solid #ffc107;
+        }
+        
+        .formula-content {
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        
+        .search-input {
+            padding-left: 40px;
+            border-radius: 50px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-toggle {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-toggle:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
+        
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 0;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .formula-content {
+                font-size: 1rem;
+                min-height: 60px;
+            }
+            .card-title {
+                font-size: 1rem;
+            }
+            .btn-toggle {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            .search-input {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .col-lg-4, .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .formula-content {
+                font-size: 0.9rem;
+            }
+            .tags span {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-square-root-variable me-2"></i>Formulas App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="math.html">Mathematics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="physics.html">Physics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="chemistry.html">Chemistry</a></li>
+                    <li class="nav-item"><a class="nav-link" href="biology.html">Biology</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold"><i class="fas fa-square-root-variable me-3"></i>Mathematical and Physics Formulas</h1>
+            <p class="lead">A comprehensive collection of essential formulas for students and professionals</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-container">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" id="search" class="form-control search-input" placeholder="Search formulas by name, category, or tags...">
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="section-title">Mathematics Formulas</h2>
+        </div>
+        <div id="math-formulas" class="row"></div>
+        
+        <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+            <h2 class="section-title">Physics Formulas</h2>
+        </div>
+        <div id="physics-formulas" class="row"></div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <i class="fas fa-search fa-3x mb-3"></i>
+            <h3>No formulas found</h3>
+            <p>Try adjusting your search terms</p>
+        </div>
+    </div>
+
+    <footer class="footer text-center mt-5">
+        <div class="container">
+            <p>&copy; 2025 Formulas App | Created with love for students and educators</p>
+        </div>
+    </footer>
+
+    <script>
+        // Formula data
+        const mathFormulas = [
+            { name: "Quadratic Formula", category: "Algebra", latex: "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}", tags: ["quadratic", "equation", "roots"] },
+            { name: "Pythagorean Theorem", category: "Geometry", latex: "a^2 + b^2 = c^2", tags: ["triangle", "right triangle", "hypotenuse"] },
+            { name: "Area of Circle", category: "Geometry", latex: "A = \\pi r^2", tags: ["circle", "area", "radius"] },
+            { name: "Circumference of Circle", category: "Geometry", latex: "C = 2\\pi r", tags: ["circle", "circumference", "perimeter"] },
+            { name: "Distance Formula", category: "Geometry", latex: "d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}", tags: ["distance", "coordinates", "points"] },
+            { name: "Slope Formula", category: "Algebra", latex: "m = \\frac{y_2 - y_1}{x_2 - x_1}", tags: ["slope", "line", "gradient"] },
+            { name: "Quadratic Equation", category: "Algebra", latex: "ax^2 + bx + c = 0", tags: ["quadratic", "polynomial", "equation"] },
+            { name: "Binomial Theorem", category: "Algebra", latex: "(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k", tags: ["binomial", "expansion", "polynomial"] },
+            { name: "Arithmetic Sequence", category: "Sequences", latex: "a_n = a_1 + (n - 1)d", tags: ["arithmetic", "sequence", "series"] },
+            { name: "Geometric Sequence", category: "Sequences", latex: "a_n = a_1 \\cdot r^{n-1}", tags: ["geometric", "sequence", "series"] },
+            { name: "Sum of Arithmetic Series", category: "Sequences", latex: "S_n = \\frac{n}{2}(a_1 + a_n)", tags: ["arithmetic", "series", "sum"] },
+            { name: "Sum of Geometric Series", category: "Sequences", latex: "S_n = a_1 \\frac{1 - r^n}{1 - r}", tags: ["geometric", "series", "sum"] },
+            { name: "Euler's Formula", category: "Complex Numbers", latex: "e^{i\\theta} = \\cos\\theta + i\\sin\\theta", tags: ["euler", "complex", "exponential"] },
+            { name: "De Moivre's Theorem", category: "Complex Numbers", latex: "(\\cos\\theta + i\\sin\\theta)^n = \\cos(n\\theta) + i\\sin(n\\theta)", tags: ["complex", "trigonometry", "powers"] },
+            { name: "Law of Sines", category: "Trigonometry", latex: "\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}", tags: ["sine", "triangle", "trigonometry"] },
+            { name: "Law of Cosines", category: "Trigonometry", latex: "c^2 = a^2 + b^2 - 2ab\\cos C", tags: ["cosine", "triangle", "trigonometry"] },
+            { name: "Double Angle Formula (Sine)", category: "Trigonometry", latex: "\\sin(2\\theta) = 2\\sin\\theta\\cos\\theta", tags: ["sine", "double angle", "trigonometry"] },
+            { name: "Double Angle Formula (Cosine)", category: "Trigonometry", latex: "\\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta", tags: ["cosine", "double angle", "trigonometry"] },
+            { name: "Half Angle Formula (Sine)", category: "Trigonometry", latex: "\\sin\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 - \\cos\\theta}{2}}", tags: ["sine", "half angle", "trigonometry"] },
+            { name: "Half Angle Formula (Cosine)", category: "Trigonometry", latex: "\\cos\\frac{\\theta}{2} = \\pm\\sqrt{\\frac{1 + \\cos\\theta}{2}}", tags: ["cosine", "half angle", "trigonometry"] },
+            { name: "Product-to-Sum Formula", category: "Trigonometry", latex: "\\sin A \\cos B = \\frac{1}{2}[\\sin(A+B) + \\sin(A-B)]", tags: ["trigonometry", "product", "sum"] },
+            { name: "Sum-to-Product Formula", category: "Trigonometry", latex: "\\sin A + \\sin B = 2\\sin\\frac{A+B}{2}\\cos\\frac{A-B}{2}", tags: ["trigonometry", "sum", "product"] },
+            { name: "Derivative of Sine", category: "Calculus", latex: "\\frac{d}{dx}\\sin x = \\cos x", tags: ["derivative", "sine", "calculus"] },
+            { name: "Derivative of Cosine", category: "Calculus", latex: "\\frac{d}{dx}\\cos x = -\\sin x", tags: ["derivative", "cosine", "calculus"] },
+            { name: "Derivative of Tangent", category: "Calculus", latex: "\\frac{d}{dx}\\tan x = \\sec^2 x", tags: ["derivative", "tangent", "calculus"] },
+            { name: "Power Rule", category: "Calculus", latex: "\\frac{d}{dx}x^n = nx^{n-1}", tags: ["derivative", "power", "calculus"] },
+            { name: "Product Rule", category: "Calculus", latex: "\\frac{d}{dx}[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)", tags: ["derivative", "product", "calculus"] },
+            { name: "Quotient Rule", category: "Calculus", latex: "\\frac{d}{dx}\\left[\\frac{f(x)}{g(x)}\\right] = \\frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}", tags: ["derivative", "quotient", "calculus"] },
+            { name: "Chain Rule", category: "Calculus", latex: "\\frac{d}{dx}f(g(x)) = f'(g(x)) \\cdot g'(x)", tags: ["derivative", "chain", "calculus"] },
+            { name: "Integration by Parts", category: "Calculus", latex: "\\int u\\,dv = uv - \\int v\\,du", tags: ["integral", "parts", "calculus"] },
+            { name: "Fundamental Theorem of Calculus", category: "Calculus", latex: "\\int_a^b f(x)\\,dx = F(b) - F(a)", tags: ["integral", "fundamental", "calculus"] },
+            { name: "Trapezoidal Rule", category: "Calculus", latex: "\\int_a^b f(x)\\,dx \\approx \\frac{b-a}{2n}[f(x_0) + 2f(x_1) + \\cdots + 2f(x_{n-1}) + f(x_n)]", tags: ["integral", "approximation", "numerical"] },
+            { name: "Simpson's Rule", category: "Calculus", latex: "\\int_a^b f(x)\\,dx \\approx \\frac{b-a}{3n}[f(x_0) + 4f(x_1) + 2f(x_2) + \\cdots + 4f(x_{n-1}) + f(x_n)]", tags: ["integral", "approximation", "numerical"] },
+            { name: "Taylor Series", category: "Calculus", latex: "f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!}(x-a)^n", tags: ["series", "approximation", "calculus"] },
+            { name: "Maclaurin Series", category: "Calculus", latex: "f(x) = \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(0)}{n!}x^n", tags: ["series", "approximation", "calculus"] },
+            { name: "Limit Definition of Derivative", category: "Calculus", latex: "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}", tags: ["derivative", "limit", "calculus"] },
+            { name: "L'Hôpital's Rule", category: "Calculus", latex: "\\lim_{x \\to c} \\frac{f(x)}{g(x)} = \\lim_{x \\to c} \\frac{f'(x)}{g'(x)}", tags: ["limit", "calculus", "rule"] },
+            { name: "Dot Product", category: "Vector Calculus", latex: "\\mathbf{a} \\cdot \\mathbf{b} = |\\mathbf{a}||\\mathbf{b}|\\cos\\theta", tags: ["vector", "dot product", "scalar"] },
+            { name: "Cross Product", category: "Vector Calculus", latex: "|\\mathbf{a} \\times \\mathbf{b}| = |\\mathbf{a}||\\mathbf{b}|\\sin\\theta", tags: ["vector", "cross product", "magnitude"] },
+            { name: "Gradient", category: "Vector Calculus", latex: "\\nabla f = \\left(\\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y}, \\frac{\\partial f}{\\partial z}\\right)", tags: ["vector", "gradient", "multivariable"] },
+            { name: "Divergence", category: "Vector Calculus", latex: "\\nabla \\cdot \\mathbf{F} = \\frac{\\partial F_x}{\\partial x} + \\frac{\\partial F_y}{\\partial y} + \\frac{\\partial F_z}{\\partial z}", tags: ["vector", "divergence", "multivariable"] },
+            { name: "Curl", category: "Vector Calculus", latex: "\\nabla \\times \\mathbf{F} = \\left(\\frac{\\partial F_z}{\\partial y} - \\frac{\\partial F_y}{\\partial z}, \\frac{\\partial F_x}{\\partial z} - \\frac{\\partial F_z}{\\partial x}, \\frac{\\partial F_y}{\\partial x} - \\frac{\\partial F_x}{\\partial y}\\right)", tags: ["vector", "curl", "multivariable"] },
+            { name: "Laplacian", category: "Vector Calculus", latex: "\\nabla^2 f = \\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2} + \\frac{\\partial^2 f}{\\partial z^2}", tags: ["vector", "laplacian", "multivariable"] },
+            { name: "Green's Theorem", category: "Vector Calculus", latex: "\\oint_C (L\\,dx + M\\,dy) = \\iint_D \\left(\\frac{\\partial M}{\\partial x} - \\frac{\\partial L}{\\partial y}\\right) dA", tags: ["vector", "integral", "theorem"] },
+            { name: "Stokes' Theorem", category: "Vector Calculus", latex: "\\oint_C \\mathbf{F} \\cdot d\\mathbf{r} = \\iint_S (\\nabla \\times \\mathbf{F}) \\cdot d\\mathbf{S}", tags: ["vector", "integral", "theorem"] },
+            { name: "Divergence Theorem", category: "Vector Calculus", latex: "\\oiint_S \\mathbf{F} \\cdot d\\mathbf{S} = \\iiint_V (\\nabla \\cdot \\mathbf{F})\\,dV", tags: ["vector", "integral", "theorem"] },
+            { name: "Probability of Event", category: "Probability", latex: "P(A) = \\frac{\\text{Number of favorable outcomes}}{\\text{Total number of outcomes}}", tags: ["probability", "event", "outcomes"] },
+            { name: "Conditional Probability", category: "Probability", latex: "P(A|B) = \\frac{P(A \\cap B)}{P(B)}", tags: ["probability", "conditional", "event"] },
+            { name: "Bayes' Theorem", category: "Probability", latex: "P(A|B) = \\frac{P(B|A)P(A)}{P(B)}", tags: ["probability", "bayes", "theorem"] },
+            { name: "Binomial Distribution", category: "Probability", latex: "P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}", tags: ["probability", "distribution", "binomial"] },
+            { name: "Normal Distribution", category: "Probability", latex: "f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}", tags: ["probability", "distribution", "normal"] },
+            { name: "Poisson Distribution", category: "Probability", latex: "P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}", tags: ["probability", "distribution", "poisson"] },
+            { name: "Exponential Distribution", category: "Probability", latex: "f(x) = \\lambda e^{-\\lambda x}", tags: ["probability", "distribution", "exponential"] },
+            { name: "Mean", category: "Statistics", latex: "\\mu = \\frac{1}{n} \\sum_{i=1}^{n} x_i", tags: ["statistics", "mean", "average"] },
+            { name: "Variance", category: "Statistics", latex: "\\sigma^2 = \\frac{1}{n} \\sum_{i=1}^{n} (x_i - \\mu)^2", tags: ["statistics", "variance", "dispersion"] },
+            { name: "Standard Deviation", category: "Statistics", latex: "\\sigma = \\sqrt{\\frac{1}{n} \\sum_{i=1}^{n} (x_i - \\mu)^2}", tags: ["statistics", "standard deviation", "dispersion"] },
+            { name: "Covariance", category: "Statistics", latex: "\\text{Cov}(X,Y) = \\frac{1}{n} \\sum_{i=1}^{n} (x_i - \\mu_x)(y_i - \\mu_y)", tags: ["statistics", "covariance", "relationship"] },
+            { name: "Correlation Coefficient", category: "Statistics", latex: "r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum (x_i - \\bar{x})^2 \\sum (y_i - \\bar{y})^2}}", tags: ["statistics", "correlation", "relationship"] },
+            { name: "Linear Regression", category: "Statistics", latex: "y = mx + b", tags: ["statistics", "regression", "line"] },
+            { name: "Matrix Multiplication", category: "Linear Algebra", latex: "C_{ij} = \\sum_{k=1}^{n} A_{ik} B_{kj}", tags: ["matrix", "multiplication", "linear algebra"] },
+            { name: "Determinant of 2x2 Matrix", category: "Linear Algebra", latex: "\\det\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc", tags: ["matrix", "determinant", "linear algebra"] },
+            { name: "Determinant of 3x3 Matrix", category: "Linear Algebra", latex: "\\det\\begin{pmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\end{pmatrix} = a(ei - fh) - b(di - fg) + c(dh - eg)", tags: ["matrix", "determinant", "linear algebra"] },
+            { name: "Inverse of 2x2 Matrix", category: "Linear Algebra", latex: "\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}", tags: ["matrix", "inverse", "linear algebra"] },
+            { name: "Eigenvalue Equation", category: "Linear Algebra", latex: "A\\mathbf{v} = \\lambda\\mathbf{v}", tags: ["matrix", "eigenvalue", "eigenvector"] },
+            { name: "Characteristic Polynomial", category: "Linear Algebra", latex: "\\det(A - \\lambda I) = 0", tags: ["matrix", "eigenvalue", "polynomial"] },
+            { name: "Dot Product in Rn", category: "Linear Algebra", latex: "\\mathbf{a} \\cdot \\mathbf{b} = \\sum_{i=1}^{n} a_i b_i", tags: ["vector", "dot product", "linear algebra"] },
+            { name: "Vector Norm", category: "Linear Algebra", latex: "\\|\\mathbf{v}\\| = \\sqrt{v_1^2 + v_2^2 + \\cdots + v_n^2}", tags: ["vector", "norm", "magnitude"] },
+            { name: "Cauchy-Schwarz Inequality", category: "Linear Algebra", latex: "|\\mathbf{a} \\cdot \\mathbf{b}| \\leq \\|\\mathbf{a}\\| \\|\\mathbf{b}\\|", tags: ["inequality", "vector", "linear algebra"] },
+            { name: "Triangle Inequality", category: "Linear Algebra", latex: "\\|\\mathbf{a} + \\mathbf{b}\\| \\leq \\|\\mathbf{a}\\| + \\|\\mathbf{b}\\|", tags: ["inequality", "vector", "linear algebra"] },
+            { name: "Fourier Series", category: "Analysis", latex: "f(x) = \\frac{a_0}{2} + \\sum_{n=1}^{\\infty} [a_n \\cos(nx) + b_n \\sin(nx)]", tags: ["fourier", "series", "analysis"] },
+            { name: "Fourier Coefficients", category: "Analysis", latex: "a_n = \\frac{1}{\\pi} \\int_{-\\pi}^{\\pi} f(x) \\cos(nx)\\,dx", tags: ["fourier", "coefficients", "analysis"] },
+            { name: "Laplace Transform", category: "Analysis", latex: "F(s) = \\int_0^{\\infty} f(t) e^{-st}\\,dt", tags: ["laplace", "transform", "integral"] },
+            { name: "Inverse Laplace Transform", category: "Analysis", latex: "f(t) = \\frac{1}{2\\pi i} \\lim_{T\\to\\infty} \\int_{\\gamma-iT}^{\\gamma+iT} F(s) e^{st}\\,ds", tags: ["laplace", "transform", "integral"] },
+            { name: "Fourier Transform", category: "Analysis", latex: "F(\\omega) = \\int_{-\\infty}^{\\infty} f(t) e^{-i\\omega t}\\,dt", tags: ["fourier", "transform", "integral"] },
+            { name: "Inverse Fourier Transform", category: "Analysis", latex: "f(t) = \\frac{1}{2\\pi} \\int_{-\\infty}^{\\infty} F(\\omega) e^{i\\omega t}\\,d\\omega", tags: ["fourier", "transform", "integral"] },
+            { name: "Dirac Delta Function", category: "Analysis", latex: "\\int_{-\\infty}^{\\infty} \\delta(x)\\,dx = 1", tags: ["delta", "function", "distribution"] },
+            { name: "Heaviside Step Function", category: "Analysis", latex: "H(x) = \\begin{cases} 0 & x < 0 \\\\ 1 & x \\geq 0 \\end{cases}", tags: ["step", "function", "heaviside"] },
+            { name: "Error Function", category: "Analysis", latex: "\\text{erf}(x) = \\frac{2}{\\sqrt{\\pi}} \\int_0^x e^{-t^2}\\,dt", tags: ["error", "function", "integral"] },
+            { name: "Gamma Function", category: "Analysis", latex: "\\Gamma(z) = \\int_0^{\\infty} t^{z-1} e^{-t}\\,dt", tags: ["gamma", "function", "integral"] },
+            { name: "Beta Function", category: "Analysis", latex: "B(x,y) = \\int_0^1 t^{x-1} (1-t)^{y-1}\\,dt", tags: ["beta", "function", "integral"] },
+            { name: "Riemann Zeta Function", category: "Analysis", latex: "\\zeta(s) = \\sum_{n=1}^{\\infty} \\frac{1}{n^s}", tags: ["zeta", "function", "series"] },
+            { name: "Bessel Function", category: "Analysis", latex: "J_n(x) = \\frac{1}{\\pi} \\int_0^{\\pi} \\cos(n\\theta - x\\sin\\theta)\\,d\\theta", tags: ["bessel", "function", "integral"] },
+            { name: "Legendre Polynomial", category: "Analysis", latex: "P_n(x) = \\frac{1}{2^n n!} \\frac{d^n}{dx^n} (x^2 - 1)^n", tags: ["legendre", "polynomial", "differential"] },
+            { name: "Hermite Polynomial", category: "Analysis", latex: "H_n(x) = (-1)^n e^{x^2} \\frac{d^n}{dx^n} e^{-x^2}", tags: ["hermite", "polynomial", "differential"] },
+            { name: "Laguerre Polynomial", category: "Analysis", latex: "L_n(x) = \\frac{e^x}{n!} \\frac{d^n}{dx^n} (x^n e^{-x})", tags: ["laguerre", "polynomial", "differential"] },
+            { name: "Chebyshev Polynomial", category: "Analysis", latex: "T_n(x) = \\cos(n \\cos^{-1} x)", tags: ["chebyshev", "polynomial", "trigonometry"] },
+            { name: "Hyperbolic Sine", category: "Analysis", latex: "\\sinh x = \\frac{e^x - e^{-x}}{2}", tags: ["hyperbolic", "sine", "exponential"] },
+            { name: "Hyperbolic Cosine", category: "Analysis", latex: "\\cosh x = \\frac{e^x + e^{-x}}{2}", tags: ["hyperbolic", "cosine", "exponential"] },
+            { name: "Hyperbolic Tangent", category: "Analysis", latex: "\\tanh x = \\frac{\\sinh x}{\\cosh x}", tags: ["hyperbolic", "tangent", "ratio"] },
+            { name: "Inverse Hyperbolic Sine", category: "Analysis", latex: "\\sinh^{-1} x = \\ln(x + \\sqrt{x^2 + 1})", tags: ["hyperbolic", "inverse", "logarithm"] },
+            { name: "Inverse Hyperbolic Cosine", category: "Analysis", latex: "\\cosh^{-1} x = \\ln(x + \\sqrt{x^2 - 1})", tags: ["hyperbolic", "inverse", "logarithm"] },
+            { name: "Inverse Hyperbolic Tangent", category: "Analysis", latex: "\\tanh^{-1} x = \\frac{1}{2} \\ln\\left(\\frac{1+x}{1-x}\\right)", tags: ["hyperbolic", "inverse", "logarithm"] },
+            { name: "Logarithm Change of Base", category: "Algebra", latex: "\\log_b a = \\frac{\\log_c a}{\\log_c b}", tags: ["logarithm", "change of base", "algebra"] },
+            { name: "Logarithm Product Rule", category: "Algebra", latex: "\\log_b (xy) = \\log_b x + \\log_b y", tags: ["logarithm", "product", "algebra"] },
+            { name: "Logarithm Quotient Rule", category: "Algebra", latex: "\\log_b \\left(\\frac{x}{y}\\right) = \\log_b x - \\log_b y", tags: ["logarithm", "quotient", "algebra"] },
+            { name: "Logarithm Power Rule", category: "Algebra", latex: "\\log_b (x^y) = y \\log_b x", tags: ["logarithm", "power", "algebra"] },
+            { name: "Exponential Growth", category: "Algebra", latex: "A = A_0 e^{kt}", tags: ["exponential", "growth", "function"] },
+            { name: "Exponential Decay", category: "Algebra", latex: "A = A_0 e^{-kt}", tags: ["exponential", "decay", "function"] },
+            { name: "Compound Interest", category: "Algebra", latex: "A = P\\left(1 + \\frac{r}{n}\\right)^{nt}", tags: ["interest", "compound", "finance"] },
+            { name: "Continuous Compound Interest", category: "Algebra", latex: "A = Pe^{rt}", tags: ["interest", "continuous", "finance"] }
+        ];
+
+        const physicsFormulas = [
+            { name: "Newton's Second Law", category: "Mechanics", latex: "F = ma", tags: ["force", "motion", "newton"] },
+            { name: "Newton's Law of Universal Gravitation", category: "Mechanics", latex: "F = G\\frac{m_1 m_2}{r^2}", tags: ["gravity", "force", "newton"] },
+            { name: "Kinetic Energy", category: "Mechanics", latex: "K = \\frac{1}{2}mv^2", tags: ["energy", "kinetic", "motion"] },
+            { name: "Potential Energy (Gravity)", category: "Mechanics", latex: "U = mgh", tags: ["energy", "potential", "gravity"] },
+            { name: "Work-Energy Theorem", category: "Mechanics", latex: "W = \\Delta K", tags: ["work", "energy", "theorem"] },
+            { name: "Conservation of Energy", category: "Mechanics", latex: "E_i = E_f", tags: ["energy", "conservation", "physics"] },
+            { name: "Momentum", category: "Mechanics", latex: "p = mv", tags: ["momentum", "motion", "mass"] },
+            { name: "Impulse", category: "Mechanics", latex: "J = F\\Delta t = \\Delta p", tags: ["impulse", "force", "momentum"] },
+            { name: "Conservation of Momentum", category: "Mechanics", latex: "\\sum p_i = \\sum p_f", tags: ["momentum", "conservation", "physics"] },
+            { name: "Centripetal Force", category: "Mechanics", latex: "F_c = \\frac{mv^2}{r}", tags: ["force", "centripetal", "circular"] },
+            { name: "Centripetal Acceleration", category: "Mechanics", latex: "a_c = \\frac{v^2}{r}", tags: ["acceleration", "centripetal", "circular"] },
+            { name: "Torque", category: "Mechanics", latex: "\\tau = rF\\sin\\theta", tags: ["torque", "rotation", "force"] },
+            { name: "Angular Momentum", category: "Mechanics", latex: "L = I\\omega", tags: ["angular", "momentum", "rotation"] },
+            { name: "Moment of Inertia", category: "Mechanics", latex: "I = \\sum m_i r_i^2", tags: ["inertia", "rotation", "mass"] },
+            { name: "Simple Harmonic Motion", category: "Mechanics", latex: "x(t) = A\\cos(\\omega t + \\phi)", tags: ["harmonic", "motion", "oscillation"] },
+            { name: "Period of Spring", category: "Mechanics", latex: "T = 2\\pi\\sqrt{\\frac{m}{k}}", tags: ["period", "spring", "oscillation"] },
+            { name: "Period of Pendulum", category: "Mechanics", latex: "T = 2\\pi\\sqrt{\\frac{L}{g}}", tags: ["period", "pendulum", "oscillation"] },
+            { name: "Hooke's Law", category: "Mechanics", latex: "F = -kx", tags: ["spring", "force", "hooke"] },
+            { name: "Bernoulli's Equation", category: "Fluid Mechanics", latex: "P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{constant}", tags: ["fluid", "pressure", "bernoulli"] },
+            { name: "Continuity Equation", category: "Fluid Mechanics", latex: "A_1 v_1 = A_2 v_2", tags: ["fluid", "continuity", "flow"] },
+            { name: "Buoyant Force", category: "Fluid Mechanics", latex: "F_b = \\rho V g", tags: ["buoyancy", "force", "archimedes"] },
+            { name: "Pressure", category: "Fluid Mechanics", latex: "P = \\frac{F}{A}", tags: ["pressure", "force", "area"] },
+            { name: "Ideal Gas Law", category: "Thermodynamics", latex: "PV = nRT", tags: ["gas", "ideal", "law"] },
+            { name: "First Law of Thermodynamics", category: "Thermodynamics", latex: "\\Delta U = Q - W", tags: ["thermodynamics", "energy", "first law"] },
+            { name: "Efficiency", category: "Thermodynamics", latex: "\\eta = \\frac{W}{Q_h}", tags: ["efficiency", "thermodynamics", "work"] },
+            { name: "Carnot Efficiency", category: "Thermodynamics", latex: "\\eta = 1 - \\frac{T_c}{T_h}", tags: ["efficiency", "carnot", "thermodynamics"] },
+            { name: "Heat Transfer", category: "Thermodynamics", latex: "Q = mc\\Delta T", tags: ["heat", "transfer", "temperature"] },
+            { name: "Specific Heat", category: "Thermodynamics", latex: "c = \\frac{Q}{m\\Delta T}", tags: ["heat", "specific", "capacity"] },
+            { name: "Latent Heat", category: "Thermodynamics", latex: "Q = mL", tags: ["heat", "latent", "phase"] },
+            { name: "RMS Speed", category: "Thermodynamics", latex: "v_{rms} = \\sqrt{\\frac{3kT}{m}}", tags: ["speed", "rms", "gas"] },
+            { name: "Maxwell-Boltzmann Distribution", category: "Thermodynamics", latex: "f(v) = 4\\pi v^2 \\left(\\frac{m}{2\\pi kT}\\right)^{3/2} e^{-\\frac{mv^2}{2kT}}", tags: ["distribution", "maxwell", "boltzmann"] },
+            { name: "Entropy", category: "Thermodynamics", latex: "\\Delta S = \\int \\frac{dQ}{T}", tags: ["entropy", "thermodynamics", "second law"] },
+            { name: "Coulomb's Law", category: "Electromagnetism", latex: "F = k\\frac{q_1 q_2}{r^2}", tags: ["coulomb", "force", "electric"] },
+            { name: "Electric Field", category: "Electromagnetism", latex: "E = \\frac{F}{q}", tags: ["electric", "field", "force"] },
+            { name: "Electric Potential", category: "Electromagnetism", latex: "V = \\frac{U}{q}", tags: ["electric", "potential", "energy"] },
+            { name: "Capacitance", category: "Electromagnetism", latex: "C = \\frac{Q}{V}", tags: ["capacitance", "charge", "voltage"] },
+            { name: "Capacitor Energy", category: "Electromagnetism", latex: "U = \\frac{1}{2}CV^2", tags: ["energy", "capacitor", "electric"] },
+            { name: "Ohm's Law", category: "Electromagnetism", latex: "V = IR", tags: ["ohm", "law", "circuit"] },
+            { name: "Electric Power", category: "Electromagnetism", latex: "P = IV", tags: ["power", "electric", "circuit"] },
+            { name: "Resistance", category: "Electromagnetism", latex: "R = \\rho\\frac{L}{A}", tags: ["resistance", "resistivity", "circuit"] },
+            { name: "Joule's Law", category: "Electromagnetism", latex: "P = I^2 R", tags: ["power", "joule", "circuit"] },
+            { name: "Kirchhoff's Current Law", category: "Electromagnetism", latex: "\\sum I_{in} = \\sum I_{out}", tags: ["kirchhoff", "current", "circuit"] },
+            { name: "Kirchhoff's Voltage Law", category: "Electromagnetism", latex: "\\sum V = 0", tags: ["kirchhoff", "voltage", "circuit"] },
+            { name: "Magnetic Force on Charge", category: "Electromagnetism", latex: "F = qvB\\sin\\theta", tags: ["magnetic", "force", "charge"] },
+            { name: "Magnetic Force on Current", category: "Electromagnetism", latex: "F = ILB\\sin\\theta", tags: ["magnetic", "force", "current"] },
+            { name: "Magnetic Field of Wire", category: "Electromagnetism", latex: "B = \\frac{\\mu_0 I}{2\\pi r}", tags: ["magnetic", "field", "wire"] },
+            { name: "Magnetic Field of Solenoid", category: "Electromagnetism", latex: "B = \\mu_0 nI", tags: ["magnetic", "field", "solenoid"] },
+            { name: "Faraday's Law", category: "Electromagnetism", latex: "\\mathcal{E} = -\\frac{d\\Phi_B}{dt}", tags: ["faraday", "law", "induction"] },
+            { name: "Lenz's Law", category: "Electromagnetism", latex: "\\mathcal{E} = -\\frac{d\\Phi_B}{dt}", tags: ["lenz", "law", "induction"] },
+            { name: "Self-Inductance", category: "Electromagnetism", latex: "\\mathcal{E} = -L\\frac{dI}{dt}", tags: ["inductance", "self", "circuit"] },
+            { name: "Inductor Energy", category: "Electromagnetism", latex: "U = \\frac{1}{2}LI^2", tags: ["energy", "inductor", "magnetic"] },
+            { name: "LC Circuit", category: "Electromagnetism", latex: "\\omega = \\frac{1}{\\sqrt{LC}}", tags: ["circuit", "lc", "oscillation"] },
+            { name: "Impedance", category: "Electromagnetism", latex: "Z = \\sqrt{R^2 + (X_L - X_C)^2}", tags: ["impedance", "circuit", "ac"] },
+            { name: "Snell's Law", category: "Optics", latex: "n_1\\sin\\theta_1 = n_2\\sin\\theta_2", tags: ["snell", "law", "refraction"] },
+            { name: "Lensmaker's Equation", category: "Optics", latex: "\\frac{1}{f} = (n-1)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)", tags: ["lens", "focal", "optics"] },
+            { name: "Thin Lens Equation", category: "Optics", latex: "\\frac{1}{f} = \\frac{1}{d_o} + \\frac{1}{d_i}", tags: ["lens", "thin", "optics"] },
+            { name: "Magnification", category: "Optics", latex: "m = -\\frac{d_i}{d_o}", tags: ["magnification", "lens", "optics"] },
+            { name: "Double-Slit Interference", category: "Optics", latex: "d\\sin\\theta = m\\lambda", tags: ["interference", "double-slit", "optics"] },
+            { name: "Single-Slit Diffraction", category: "Optics", latex: "a\\sin\\theta = m\\lambda", tags: ["diffraction", "single-slit", "optics"] },
+            { name: "Bragg's Law", category: "Optics", latex: "2d\\sin\\theta = m\\lambda", tags: ["bragg", "law", "diffraction"] },
+            { name: "Malus's Law", category: "Optics", latex: "I = I_0\\cos^2\\theta", tags: ["malus", "law", "polarization"] },
+            { name: "Doppler Effect", category: "Waves", latex: "f' = f\\frac{v \\pm v_o}{v \\mp v_s}", tags: ["doppler", "effect", "waves"] },
+            { name: "Beat Frequency", category: "Waves", latex: "f_b = |f_1 - f_2|", tags: ["beat", "frequency", "waves"] },
+            { name: "Wave Speed", category: "Waves", latex: "v = f\\lambda", tags: ["wave", "speed", "frequency"] },
+            { name: "Intensity of Wave", category: "Waves", latex: "I = \\frac{P}{A}", tags: ["intensity", "wave", "power"] },
+            { name: "Standing Waves", category: "Waves", latex: "f_n = \\frac{nv}{2L}", tags: ["standing", "wave", "frequency"] },
+            { name: "Planck's Law", category: "Quantum Mechanics", latex: "E = hf", tags: ["planck", "quantum", "energy"] },
+            { name: "Photoelectric Effect", category: "Quantum Mechanics", latex: "K_{max} = hf - \\phi", tags: ["photoelectric", "effect", "quantum"] },
+            { name: "de Broglie Wavelength", category: "Quantum Mechanics", latex: "\\lambda = \\frac{h}{p}", tags: ["de broglie", "wavelength", "quantum"] },
+            { name: "Heisenberg Uncertainty Principle", category: "Quantum Mechanics", latex: "\\Delta x \\Delta p \\geq \\frac{\\hbar}{2}", tags: ["heisenberg", "uncertainty", "quantum"] },
+            { name: "Schrödinger Equation", category: "Quantum Mechanics", latex: "i\\hbar\\frac{\\partial}{\\partial t}\\Psi = \\hat{H}\\Psi", tags: ["schrodinger", "equation", "quantum"] },
+            { name: "Wave Function", category: "Quantum Mechanics", latex: "\\Psi(x,t)", tags: ["wave", "function", "quantum"] },
+            { name: "Probability Density", category: "Quantum Mechanics", latex: "P(x) = |\\Psi(x)|^2", tags: ["probability", "density", "quantum"] },
+            { name: "Particle in a Box", category: "Quantum Mechanics", latex: "E_n = \\frac{n^2 h^2}{8mL^2}", tags: ["particle", "box", "quantum"] },
+            { name: "Hydrogen Atom Energy", category: "Quantum Mechanics", latex: "E_n = -\\frac{13.6}{n^2} \\text{ eV}", tags: ["hydrogen", "atom", "energy"] },
+            { name: "Pauli Exclusion Principle", category: "Quantum Mechanics", latex: "\\text{No two fermions can have the same quantum state}", tags: ["pauli", "exclusion", "quantum"] },
+            { name: "Spin", category: "Quantum Mechanics", latex: "S = \\sqrt{s(s+1)}\\hbar", tags: ["spin", "quantum", "angular momentum"] },
+            { name: "Time Dilation", category: "Relativity", latex: "\\Delta t = \\frac{\\Delta t_0}{\\sqrt{1 - \\frac{v^2}{c^2}}}", tags: ["time", "dilation", "relativity"] },
+            { name: "Length Contraction", category: "Relativity", latex: "L = L_0\\sqrt{1 - \\frac{v^2}{c^2}}", tags: ["length", "contraction", "relativity"] },
+            { name: "Relativistic Momentum", category: "Relativity", latex: "p = \\frac{mv}{\\sqrt{1 - \\frac{v^2}{c^2}}}", tags: ["momentum", "relativistic", "relativity"] },
+            { name: "Relativistic Energy", category: "Relativity", latex: "E = \\frac{mc^2}{\\sqrt{1 - \\frac{v^2}{c^2}}}", tags: ["energy", "relativistic", "relativity"] },
+            { name: "Rest Energy", category: "Relativity", latex: "E_0 = mc^2", tags: ["energy", "rest", "relativity"] },
+            { name: "Lorentz Transformation", category: "Relativity", latex: "x' = \\gamma(x - vt)", tags: ["lorentz", "transformation", "relativity"] },
+            { name: "Velocity Addition", category: "Relativity", latex: "u = \\frac{u' + v}{1 + \\frac{u'v}{c^2}}", tags: ["velocity", "addition", "relativity"] },
+            { name: "Relativistic Doppler Effect", category: "Relativity", latex: "f = f_0\\sqrt{\\frac{1 - \\beta}{1 + \\beta}}", tags: ["doppler", "relativistic", "relativity"] },
+            { name: "Gravitational Redshift", category: "Relativity", latex: "\\frac{\\Delta f}{f} = \\frac{gh}{c^2}", tags: ["gravitational", "redshift", "relativity"] },
+            { name: "Schwarzschild Radius", category: "Relativity", latex: "R_s = \\frac{2GM}{c^2}", tags: ["schwarzschild", "radius", "black hole"] },
+            { name: "Friedmann Equation", category: "Cosmology", latex: "H^2 = \\left(\\frac{\\dot{a}}{a}\\right)^2 = \\frac{8\\pi G}{3}\\rho - \\frac{k}{a^2}", tags: ["friedmann", "equation", "cosmology"] },
+            { name: "Hubble's Law", category: "Cosmology", latex: "v = H_0 d", tags: ["hubble", "law", "cosmology"] },
+            { name: "Redshift", category: "Cosmology", latex: "z = \\frac{\\lambda_{obs} - \\lambda_{emit}}{\\lambda_{emit}}", tags: ["redshift", "cosmology", "wavelength"] },
+            { name: "Critical Density", category: "Cosmology", latex: "\\rho_c = \\frac{3H^2}{8\\pi G}", tags: ["density", "critical", "cosmology"] },
+            { name: "Scale Factor", category: "Cosmology", latex: "a(t)", tags: ["scale", "factor", "cosmology"] },
+            { name: "Cosmic Microwave Background", category: "Cosmology", latex: "T = 2.725 \\text{ K}", tags: ["cmb", "background", "cosmology"] },
+            { name: "Dark Energy", category: "Cosmology", latex: "\\Omega_\\Lambda", tags: ["dark", "energy", "cosmology"] },
+            { name: "Dark Matter", category: "Cosmology", latex: "\\Omega_m", tags: ["dark", "matter", "cosmology"] },
+            { name: "Baryonic Matter", category: "Cosmology", latex: "\\Omega_b", tags: ["baryonic", "matter", "cosmology"] },
+            { name: "Cosmological Constant", category: "Cosmology", latex: "\\Lambda", tags: ["cosmological", "constant", "relativity"] },
+            { name: "Einstein Field Equations", category: "Relativity", latex: "G_{\\mu\\nu} = 8\\pi G T_{\\mu\\nu}", tags: ["einstein", "field", "equations"] },
+            { name: "Metric Tensor", category: "Relativity", latex: "ds^2 = g_{\\mu\\nu} dx^\\mu dx^\\nu", tags: ["metric", "tensor", "relativity"] },
+            { name: "Christoffel Symbols", category: "Relativity", latex: "\\Gamma^\\lambda_{\\mu\\nu} = \\frac{1}{2} g^{\\lambda\\rho} (\\partial_\\mu g_{\\nu\\rho} + \\partial_\\nu g_{\\rho\\mu} - \\partial_\\rho g_{\\mu\\nu})", tags: ["christoffel", "symbols", "relativity"] },
+            { name: "Riemann Curvature Tensor", category: "Relativity", latex: "R^\\rho{}_{\\sigma\\mu\\nu} = \\partial_\\mu\\Gamma^\\rho_{\\nu\\sigma} - \\partial_\\nu\\Gamma^\\rho_{\\mu\\sigma} + \\Gamma^\\rho_{\\mu\\lambda}\\Gamma^\\lambda_{\\nu\\sigma} - \\Gamma^\\rho_{\\nu\\lambda}\\Gamma^\\lambda_{\\mu\\sigma}", tags: ["riemann", "curvature", "tensor"] },
+            { name: "Ricci Tensor", category: "Relativity", latex: "R_{\\mu\\nu} = R^\\lambda{}_{\\mu\\lambda\\nu}", tags: ["ricci", "tensor", "relativity"] },
+            { name: "Ricci Scalar", category: "Relativity", latex: "R = g^{\\mu\\nu} R_{\\mu\\nu}", tags: ["ricci", "scalar", "relativity"] },
+            { name: "Einstein Tensor", category: "Relativity", latex: "G_{\\mu\\nu} = R_{\\mu\\nu} - \\frac{1}{2} R g_{\\mu\\nu}", tags: ["einstein", "tensor", "relativity"] }
+        ];
+
+        const chemistryFormulas = [
+            { name: "Ideal Gas Law", category: "Gas Laws", latex: "PV = nRT", tags: ["gas", "pressure", "volume"] },
+            { name: "pH Formula", category: "Acids and Bases", latex: "pH = -\\log[H^+]", tags: ["ph", "acid", "base"] },
+            { name: "Molarity", category: "Solutions", latex: "M = \\frac{n}{V}", tags: ["molarity", "concentration", "solution"] },
+            { name: "Equilibrium Constant", category: "Equilibrium", latex: "K = \\frac{[products]}{[reactants]}", tags: ["equilibrium", "constant", "reaction"] },
+            { name: "Avogadro's Number", category: "Atomic Structure", latex: "N_A = 6.022 \\times 10^{23}", tags: ["avogadro", "number", "moles"] },
+            { name: "Molar Mass", category: "Atomic Structure", latex: "M = \\frac{m}{n}", tags: ["molar", "mass", "moles"] },
+            { name: "Rate Law", category: "Kinetics", latex: "rate = k[A]^m[B]^n", tags: ["rate", "law", "kinetics"] },
+            { name: "Arrhenius Equation", category: "Kinetics", latex: "k = Ae^{-E_a/RT}", tags: ["arrhenius", "activation", "energy"] },
+            { name: "Gibbs Free Energy", category: "Thermodynamics", latex: "\\Delta G = \\Delta H - T\\Delta S", tags: ["gibbs", "free energy", "thermodynamics"] },
+            { name: "Enthalpy", category: "Thermodynamics", latex: "\\Delta H = q_p", tags: ["enthalpy", "heat", "thermodynamics"] },
+            { name: "Entropy", category: "Thermodynamics", latex: "\\Delta S = \\frac{q_{rev}}{T}", tags: ["entropy", "disorder", "thermodynamics"] },
+            { name: "Nernst Equation", category: "Electrochemistry", latex: "E = E^\\circ - \\frac{RT}{nF} \\ln Q", tags: ["nernst", "potential", "electrochemistry"] },
+            { name: "Faraday's Laws", category: "Electrochemistry", latex: "m = \\frac{Q}{F} \\cdot \\frac{M}{n}", tags: ["faraday", "electrolysis", "electrochemistry"] },
+            { name: "Beer-Lambert Law", category: "Spectroscopy", latex: "A = \\epsilon l c", tags: ["beer", "lambert", "absorption"] },
+            { name: "Henderson-Hasselbalch Equation", category: "Acids and Bases", latex: "pH = pK_a + \\log\\left(\\frac{[A^-]}{[HA]}\\right)", tags: ["henderson", "hasselbalch", "buffer"] },
+            { name: "Raoult's Law", category: "Solutions", latex: "P = P^\\circ x", tags: ["raoult", "vapor pressure", "solution"] },
+            { name: "van der Waals Equation", category: "Gas Laws", latex: "\\left(P + \\frac{a}{V_m^2}\\right)(V_m - b) = RT", tags: ["van der waals", "gas", "equation"] },
+            { name: "Bohr Model", category: "Atomic Structure", latex: "E_n = -\\frac{13.6}{n^2} \\text{ eV}", tags: ["bohr", "model", "atom"] },
+            { name: "De Broglie Wavelength", category: "Quantum Chemistry", latex: "\\lambda = \\frac{h}{mv}", tags: ["de broglie", "wavelength", "quantum"] },
+            { name: "Heisenberg Uncertainty Principle", category: "Quantum Chemistry", latex: "\\Delta x \\Delta p \\geq \\frac{\\hbar}{2}", tags: ["heisenberg", "uncertainty", "quantum"] },
+            { name: "Schrödinger Equation", category: "Quantum Chemistry", latex: "i\\hbar\\frac{\\partial}{\\partial t}\\Psi = \\hat{H}\\Psi", tags: ["schrodinger", "equation", "quantum"] }
+        ];
+
+        const biologyFormulas = [
+            { name: "Hardy-Weinberg Principle", category: "Genetics", latex: "p^2 + 2pq + q^2 = 1", tags: ["hardy", "weinberg", "genetics"] },
+            { name: "Allele Frequency", category: "Genetics", latex: "p + q = 1", tags: ["allele", "frequency", "genetics"] },
+            { name: "Photosynthesis", category: "Plant Biology", latex: "6CO_2 + 6H_2O \\rightarrow C_6H_{12}O_6 + 6O_2", tags: ["photosynthesis", "glucose", "oxygen"] },
+            { name: "Cellular Respiration", category: "Cell Biology", latex: "C_6H_{12}O_6 + 6O_2 \\rightarrow 6CO_2 + 6H_2O", tags: ["respiration", "glucose", "energy"] },
+            { name: "Osmotic Pressure", category: "Cell Biology", latex: "\\Pi = iCRT", tags: ["osmotic", "pressure", "cell"] },
+            { name: "Michaelis-Menten Equation", category: "Biochemistry", latex: "v = \\frac{V_{max}[S]}{K_m + [S]}", tags: ["michaelis", "menten", "enzyme"] },
+            { name: "Logistic Growth", category: "Ecology", latex: "\\frac{dN}{dt} = rN\\left(1 - \\frac{N}{K}\\right)", tags: ["logistic", "growth", "population"] },
+            { name: "Exponential Growth", category: "Ecology", latex: "\\frac{dN}{dt} = rN", tags: ["exponential", "growth", "population"] },
+            { name: "Shannon Diversity Index", category: "Ecology", latex: "H = -\\sum p_i \\ln p_i", tags: ["shannon", "diversity", "ecology"] },
+            { name: "Mendel's Law of Segregation", category: "Genetics", latex: "\\text{Each pair of alleles separates during gamete formation}", tags: ["mendel", "segregation", "genetics"] },
+            { name: "Mendel's Law of Independent Assortment", category: "Genetics", latex: "\\text{Alleles of different genes assort independently}", tags: ["mendel", "assortment", "genetics"] },
+            { name: "Punnett Square", category: "Genetics", latex: "\\text{Grid showing possible genotypes}", tags: ["punnett", "square", "genetics"] },
+            { name: "DNA Replication", category: "Molecular Biology", latex: "5' \\rightarrow 3'", tags: ["dna", "replication", "direction"] },
+            { name: "Central Dogma", category: "Molecular Biology", latex: "DNA \\rightarrow RNA \\rightarrow Protein", tags: ["central", "dogma", "molecular"] },
+            { name: "PCR Amplification", category: "Molecular Biology", latex: "\\text{Polymerase Chain Reaction}", tags: ["pcr", "amplification", "molecular"] },
+            { name: "Gel Electrophoresis", category: "Molecular Biology", latex: "\\text{Separation by size and charge}", tags: ["gel", "electrophoresis", "molecular"] },
+            { name: "Mitosis Stages", category: "Cell Biology", latex: "\\text{Prophase, Metaphase, Anaphase, Telophase}", tags: ["mitosis", "stages", "cell"] },
+            { name: "Meiosis Stages", category: "Cell Biology", latex: "\\text{Prophase I, Metaphase I, Anaphase I, Telophase I, Prophase II, Metaphase II, Anaphase II, Telophase II}", tags: ["meiosis", "stages", "cell"] },
+            { name: "Blood Pressure", category: "Physiology", latex: "\\text{Systolic/Diastolic}", tags: ["blood", "pressure", "physiology"] },
+            { name: "Heart Rate", category: "Physiology", latex: "\\text{Beats per minute}", tags: ["heart", "rate", "physiology"] },
+            { name: "Tidal Volume", category: "Physiology", latex: "V_T", tags: ["tidal", "volume", "respiration"] },
+            { name: "Vital Capacity", category: "Physiology", latex: "VC = TV + IRV + ERV", tags: ["vital", "capacity", "respiration"] },
+            { name: "Body Mass Index", category: "Health", latex: "BMI = \\frac{weight}{height^2}", tags: ["bmi", "body mass", "health"] }
+        ];
